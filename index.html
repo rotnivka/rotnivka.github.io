@@ -16,27 +16,38 @@
             height: 100vh; 
             margin: 0;
             text-align: center;
-        }
-        .container { border: 1px solid #333; padding: 40px; max-width: 80%; }
-        h1 { 
-            letter-spacing: 5px; 
-            font-size: 1.5rem;
-            border-right: 3px solid #fff;
-            white-space: nowrap;
             overflow: hidden;
-            animation: typing 3.5s steps(30, end), blink .75s step-end infinite;
         }
-        p { font-size: 0.8rem; color: #888; text-transform: uppercase; margin-top: 20px; }
-        @keyframes typing { from { width: 0 } to { width: 100% } }
+        .container { 
+            border: 1px solid #333; 
+            padding: 20px; 
+            width: 85%; 
+            max-width: 600px;
+        }
+        h1 { 
+            letter-spacing: 2px; 
+            font-size: clamp(1rem, 5vw, 1.8rem); /* Esto hace que la letra se encoja en móvil */
+            border-right: 3px solid #fff;
+            display: inline-block;
+            margin: 0;
+            padding-right: 5px;
+            animation: blink .75s step-end infinite;
+        }
+        p { 
+            font-size: 0.7rem; 
+            color: #888; 
+            text-transform: uppercase; 
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: white } }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>ROTNIVKA_IS_ALIVE</h1>
+        <h1>ROTNIVKA_SYSTEM_ONLINE</h1>
         <p>Material & Identity Architecture</p>
     </div>
 </body>
 </html>
-
 
