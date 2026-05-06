@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTNIVKA | Material & Identity Architecture</title>
     <style>
+        /* INVERSIÓN ESTRATÉGICA DE MATERIALES */
         :root {
-            --metal-surface: #C0C0C0;  /* Gris Plata (Fondo) */
-            --tech-ink: #1A1A1A;       /* Gris Asfalto (Texto) */
-            --accent-burn: #340001;    /* Rojo Óxido (Detalles mínimos) */
+            --bg-metal: #C0C0C0;       /* Plata como base */
+            --text-ink: #1A1A1A;       /* Asfalto como texto */
+            --accent-heat: #340001;    /* Rojo Óxido para pops */
         }
 
         body { 
-            background-color: var(--metal-surface); 
-            color: var(--tech-ink); 
+            background-color: var(--bg-metal); 
+            color: var(--text-ink); 
             font-family: 'Courier New', Courier, monospace; 
             margin: 0;
             display: flex; 
@@ -23,63 +24,66 @@
             padding: 20px;
         }
 
-        /* ESTRUCTURA DE PLANO TÉCNICO */
+        /* EL CONTENEDOR V.02 CON LA SOMBRA ROJA */
         .main-frame { 
-            border: 2px solid var(--tech-ink); 
-            padding: 50px 30px; 
+            border: 4px solid var(--text-ink); 
+            padding: 40px 20px; 
             width: 100%; 
-            max-width: 550px;
+            max-width: 600px;
             position: relative;
-            /* Sombra sutil para dar profundidad de lámina */
-            box-shadow: 8px 8px 0px rgba(26, 26, 26, 0.2);
+            box-shadow: 12px 12px 0px var(--accent-heat);
+            background-color: var(--bg-metal);
         }
 
+        /* ETIQUETA TÉCNICA */
         .label {
             position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 0.6rem;
-            color: var(--tech-ink);
-            letter-spacing: 2px;
+            top: -15px;
+            left: 20px;
+            background: var(--bg-metal);
+            padding: 0 10px;
+            font-size: 0.7rem;
+            color: var(--accent-heat);
+            letter-spacing: 3px;
             font-weight: bold;
         }
 
         h1 { 
             font-family: 'Arial Black', sans-serif;
-            font-size: clamp(2.2rem, 9vw, 4.5rem);
-            line-height: 0.8;
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            line-height: 0.85;
             margin: 0;
             text-transform: uppercase;
-            letter-spacing: -2px;
+            word-wrap: break-word;
+            color: var(--text-ink);
         }
 
-        .description {
-            margin-top: 30px;
-            border-left: 4px solid var(--tech-ink);
-            padding-left: 15px;
-            font-size: 0.85rem;
+        .subtitle {
+            margin-top: 25px;
+            border-top: 2px solid var(--accent-heat); /* Línea de acento roja */
+            padding-top: 15px;
+            color: var(--text-ink);
+            font-size: 0.8rem;
             font-weight: bold;
-            line-height: 1.5;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            line-height: 1.4;
         }
 
-        .footer-info {
+        .status-bar {
             margin-top: 40px;
             display: flex;
-            flex-direction: column;
-            gap: 5px;
-            font-size: 0.65rem;
-            border-top: 1px solid rgba(26, 26, 26, 0.3);
-            padding-top: 15px;
+            justify-content: space-between;
+            font-size: 0.6rem;
+            color: var(--accent-heat);
+            font-weight: bold;
         }
 
-        /* EL ROJO SOLO COMO UN PULSO TÉCNICO */
+        /* CURSOR INDUSTRIAL */
         .cursor {
             display: inline-block;
-            width: 8px;
-            height: 12px;
-            background: var(--accent-burn);
-            margin-left: 5px;
+            width: 10px;
+            height: 1rem;
+            background: var(--accent-heat);
             animation: blink 1s infinite;
         }
 
@@ -88,21 +92,21 @@
 </head>
 <body>
     <div class="main-frame">
-        <div class="label">REV_03.2026</div>
+        <div class="label">ID:ARCH_SYSTEM_V.02_REV</div>
         
-        <h1>ROTNIV<br>KA_</h1>
+        <h1>ROTNIVKA_</h1>
         
-        <div class="description">
+        <div class="subtitle">
             MATERIAL & IDENTITY ARCHITECTURE<br>
-            // STRATEGIC_AESTHETICS
+            // BERLIN, DE <span class="cursor"></span>
         </div>
 
-        <div class="footer-info">
-            <span>LOCATION: BERLIN, DE</span>
-            <span>SYSTEM_STATUS: OPERATIONAL <span class="cursor"></span></span>
+        <div class="status-bar">
+            <span>CORE: ACTIVE</span>
+            <span>STRATEGY: ONLINE</span>
+            <span>2026©</span>
         </div>
     </div>
 </body>
 </html>
-
 
