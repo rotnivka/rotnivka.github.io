@@ -5,20 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTNIVKA | Material & Identity Architecture</title>
     <style>
-        /* DEFINICIÓN DE MATERIALES BASE */
+        /* NUEVA ALEACIÓN DE MATERIALES (Paleta Actualizada) */
         :root {
-            --bg-color: #050505;        /* Negro Base (Sujeto a cambios) */
-            --primary-text: #FFFFFF;    /* Texto Principal */
-            --secondary-text: #AAAAAA;  /* Texto Secundario (Gris) */
-            --accent-color: #333333;   /* Bordes y Cajas */
-            --font-mono: 'Courier New', Courier, monospace; /* Tipografía Técnica */
-            --font-display: 'Arial Black', Gadget, sans-serif; /* Tipografía de Impacto */
+            --bg-tech: #1A1A1A;        /* Negro Asfáltico */
+            --text-metal: #C0C0C0;     /* Gris Plateado */
+            --accent-heat: #340001;    /* Rojo Óxido Profundo */
         }
 
         body { 
-            background-color: var(--bg-color); 
-            color: var(--primary-text); 
-            font-family: var(--font-mono); 
+            background-color: var(--bg-tech); 
+            color: var(--text-metal); 
+            font-family: 'Courier New', Courier, monospace; 
             margin: 0;
             display: flex; 
             justify-content: center; 
@@ -27,58 +24,87 @@
             padding: 20px;
         }
 
-        /* ESTRUCTURA BRUTALISTA DE CAJAS */
-        .system-container { 
-            border: 2px solid var(--primary-text); 
-            padding: 30px; 
+        /* CONTENEDOR BRUTALISTA CON PUNTO DE CALOR */
+        .main-frame { 
+            border: 3px solid var(--text-metal); 
+            padding: 40px 20px; 
             width: 100%; 
-            max-width: 800px;
-            box-shadow: 10px 10px 0 var(--accent-color); /* Sombra dura Brutalista */
+            max-width: 600px;
+            position: relative;
+            /* La sombra ahora es el rojo profundo, como un resplandor de calor industrial */
+            box-shadow: 12px 12px 0px var(--accent-heat);
             text-align: left;
         }
 
-        /* TÍTULOS DE IMPACTO (Display) */
+        /* ETIQUETA TÉCNICA (Usa el rojo de acento) */
+        .label {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--bg-tech);
+            padding: 0 10px;
+            font-size: 0.7rem;
+            color: var(--accent-heat); /* Texto en Rojo Óxido */
+            letter-spacing: 3px;
+        }
+
         h1 { 
-            font-family: var(--font-display);
-            text-transform: uppercase;
-            letter-spacing: -1px; 
-            font-size: clamp(1.8rem, 8vw, 4rem); /* Responsivo */
-            line-height: 0.9;
-            margin: 0 0 20px 0;
-            border-bottom: 2px solid var(--primary-text);
-            padding-bottom: 10px;
-        }
-
-        /* TEXTOS TÉCNICOS (Monospace) */
-        p { 
-            font-size: clamp(0.7rem, 2vw, 0.9rem); /* Responsivo */
-            color: var(--secondary-text); 
-            text-transform: uppercase; 
+            font-family: 'Arial Black', Gadget, sans-serif;
+            font-size: clamp(2.5rem, 10vw, 5rem);
+            line-height: 0.85;
             margin: 0;
-            letter-spacing: 2px;
-            line-height: 1.6;
+            text-transform: uppercase;
+            word-wrap: break-word;
+            /* El título mantiene el color metalizado */
+            color: var(--text-metal);
         }
 
-        .data-stream {
-            margin-top: 30px;
-            border-top: 1px solid var(--accent-color);
-            padding-top: 20px;
+        .subtitle {
+            margin-top: 25px;
+            border-top: 1px solid var(--accent-heat); /* Línea de acento rojo */
+            padding-top: 15px;
+            color: var(--text-metal);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            line-height: 1.4;
         }
 
+        .status-bar {
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.6rem;
+            color: var(--accent-heat); /* Detalles técnicos en rojo */
+        }
+
+        /* CURSOR DE PARPEDEO (Rojo) */
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1rem;
+            background: var(--accent-heat);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
-    <div class="system-container">
-        <h1>ROTNIVKA_<br>SYSTEM</h1>
-
-        <p>Material & Identity Architecture<br>// Berlin, DE</p>
+    <div class="main-frame">
+        <div class="label">ID:ARCH_SYSTEM_V.02</div>
         
-        <div class="data-stream">
-            <p>> INITIALIZING MANIFESTO...</p>
-            <p>> AESTHETIC STRATEGY ACTIVE.</p>
-            <p>> STATUS: IS_ALIVE</p>
-        }
+        <h1>ROTNIV<br>KA_</h1>
+        
+        <div class="subtitle">
+            MATERIAL & IDENTITY ARCHITECTURE<br>
+            // BERLIN, DE <span class="cursor"></span>
+        </div>
+
+        <div class="status-bar">
+            <span>CORE: ACTIVE</span>
+            <span>STRATEGY: ONLINE</span>
+            <span>2026©</span>
+        </div>
     </div>
 </body>
 </html>
-
