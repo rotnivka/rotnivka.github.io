@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROTNIVKA | Material & Identity Architect</title>
+    <title>ROTNIVKA | Tactics & Identity Engineering</title>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -18,216 +18,308 @@
             background-color: var(--surface-silver); 
             color: var(--ink-asphalt); 
             font-family: var(--font-main); 
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            margin: 0; padding: 0; overflow-x: hidden;
         }
 
-        .page-container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 25px;
-        }
+        .page-container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 80px 25px; }
 
-        /* HEADER DESESTRUCTURADO */
-        header {
-            margin-bottom: 150px;
-            position: relative;
-        }
-
+        /* HEADER V.10 STYLE (KA_ OUTLINE) */
+        header { margin-bottom: 120px; }
         h1 { 
             font-family: var(--font-display);
             font-size: clamp(4rem, 20vw, 12rem);
-            line-height: 0.8;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: -5px;
-            color: var(--ink-asphalt);
+            line-height: 0.8; margin: 0;
+            text-transform: uppercase; letter-spacing: -5px;
+        }
+        .ka-outline {
+            -webkit-text-stroke: 2px var(--ink-asphalt);
+            color: transparent;
         }
 
         .tagline {
             font-family: var(--font-display);
             font-size: clamp(1rem, 3vw, 1.8rem);
-            margin-top: 20px;
-            max-width: 600px;
-            text-transform: uppercase;
-            line-height: 1;
+            margin-top: 20px; max-width: 600px;
+            text-transform: uppercase; line-height: 1;
             border-left: 15px solid var(--accent-red);
             padding-left: 20px;
         }
 
-        /* SECCIONES ABIERTAS */
-        section {
-            border-top: 2px solid var(--ink-asphalt);
-            padding: 60px 0;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            transition: all 0.4s ease;
-        }
+        section { border-top: 2px solid var(--ink-asphalt); padding: 60px 0; }
+        .label { font-family: var(--font-display); font-size: 0.75rem; color: var(--accent-red); margin-bottom: 20px; display: block; }
 
-        @media (max-width: 768px) {
-            section { grid-template-columns: 1fr; }
-        }
-
-        section:hover {
-            background-color: rgba(52, 0, 1, 0.05); /* Flash de rojo sutil */
-        }
-
-        .label {
-            font-family: var(--font-display);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: var(--accent-red);
-        }
-
-        .content-large {
-            font-size: 1.1rem;
-            font-weight: 900;
-            line-height: 1.4;
-            text-transform: uppercase;
-        }
-
-        /* IMPLEMENTACIÓN DE IMÁGENES (CAPAS) */
-        .image-container {
-            width: 100%;
-            background: var(--ink-asphalt);
-            aspect-ratio: 16/9;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--ink-asphalt);
-        }
-
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(120%);
-            opacity: 0.8;
-        }
-
-        .image-overlay-text {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: var(--accent-red);
-            color: white;
-            font-size: 0.6rem;
-            padding: 2px 5px;
-            font-weight: bold;
-        }
-
-        /* SERVICIOS INTERACTIVOS */
+        /* INTERACTIVE SERVICES */
         .service-item {
             font-family: var(--font-display);
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            padding: 15px 0;
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            padding: 20px 0;
             border-bottom: 1px dashed var(--ink-asphalt);
             cursor: pointer;
-            transition: padding-left 0.3s ease;
+            transition: 0.3s;
         }
+        .service-item:hover { color: var(--accent-red); padding-left: 15px; }
 
-        .service-item:hover {
-            color: var(--accent-red);
-            padding-left: 20px;
-        }
-
-        /* SUBSTACK EMBED SIMULATION */
-        .substack-box {
-            grid-column: 1 / -1;
-            border: 5px solid var(--ink-asphalt);
-            padding: 30px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-
-        .substack-box:hover {
+        /* BOXES DE INFORMACIÓN (MODALES SIMPLES) */
+        .service-detail {
+            display: none;
             background: var(--ink-asphalt);
             color: var(--surface-silver);
+            padding: 20px;
+            margin-top: -1px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-left: 10px solid var(--accent-red);
         }
 
-        /* FOOTER */
-        footer {
-            margin-top: 100px;
-            padding: 40px 0;
-            border-top: 10px solid var(--ink-asphalt);
-            font-family: var(--font-display);
-            font-size: 0.7rem;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
+        /* MEDIA LOGS */
+        .image-container { width: 100%; border: 1px solid var(--ink-asphalt); margin: 40px 0; background: #000; position: relative; }
+        .image-container img { width: 100%; display: block; filter: grayscale(1) contrast(1.2); opacity: 0.8; }
+        .img-tag { position: absolute; top: 10px; left: 10px; background: var(--accent-red); color: white; padding: 5px; font-size: 0.6rem; font-weight: 900; }
+
+        /* SUBSTACK EMBED AREA */
+        .substack-frame { border: 4px solid var(--ink-asphalt); background: white; min-height: 200px; padding: 20px; }
+
+        footer { 
+            border-top: 10px solid var(--ink-asphalt); padding: 40px 0; 
+            font-family: var(--font-display); font-size: 0.7rem;
+            display: flex; justify-content: space-between;
         }
+        
+        a { color: inherit; text-decoration: none; transition: 0.2s; }
+        a:hover { color: var(--accent-red); }
 
     </style>
 </head>
 <body>
 
     <div class="page-container">
-        
         <header>
-            <h1>ROTNIV<br>KA_</h1>
+            <h1>ROTNIV<br><span class="ka-outline">KA_</span></h1>
             <div class="tagline">Engineering precision meets the disruptive edge of identity.</div>
         </header>
 
-        <div class="image-container">
-            <img src="https://via.placeholder.com/1200x675/1A1A1A/C0C0C0?text=MATERIAL_ANALYSIS_LOG" alt="Simulation log">
-            <div class="image-overlay-text">IMG_01 // GARMENT_FAILURE_SIMULATION</div>
-        </div>
-
         <section>
-            <div class="label">[01_ABOUT]</div>
-            <div class="content-large">
-                Founded in 2026 by Anya Rotnivka. Operating at the intersection of material science and aesthetic rebellion. Specializing in identity systems engineered for the vanguard.
+            <span class="label">[01_MEDIA_LOGS]</span>
+            <div class="image-container">
+                <span class="img-tag">DATA_VISUAL_01</span>
+                <img src="assets/tu_imagen_1.jpg" alt="Insert analysis here">
             </div>
         </section>
 
         <section>
-            <div class="label">[02_SERVICES]</div>
-            <div class="services-list">
-                <div class="service-item">IDENTITY ARCHITECTURE</div>
-                <div class="service-item">CREATIVE DIRECTION</div>
-                <div class="service-item">MATERIALS CONSULTANCY</div>
-                <div class="service-item">GARMENT FAILURE SIMULATION</div>
-                <div class="service-item">CIRCULARITY STRATEGIES</div>
-            </div>
+            <span class="label">[02_SERVICES_LIST]</span>
+            
+            <div class="service-item" onclick="toggleBox('s1')">CREATIVE DIRECTION</div>
+            <div id="s1" class="service-detail">Strategic oversight merging conceptual rebellion with market viability.</div>
+
+            <div class="service-item" onclick="toggleBox('s2')">MATERIALS CONSULTANCY</div>
+            <div id="s2" class="service-detail">Technical analysis of polymer behavior and textile integrity.</div>
+
+            <div class="service-item" onclick="toggleBox('s3')">GARMENT FAILURE SIMULATION</div>
+            <div id="s3" class="service-detail">Predictive modeling of material stress and structural lifespan.</div>
+
+            <div class="service-item" onclick="toggleBox('s4')">CIRCULARITY STRATEGIES</div>
+            <div id="s4" class="service-detail">Engineering closed-loop systems for sustainable manufacturing.</div>
         </section>
 
-        <div class="image-container" style="max-width: 60%; align-self: flex-end; margin-left: auto;">
-            <img src="https://via.placeholder.com/800x450/1A1A1A/C0C0C0?text=IDENTITY_DYNAMICS" alt="Identity Dynamics">
-            <div class="image-overlay-text">IMG_02 // SYSTEM_DYNAMICS</div>
-        </div>
-
         <section>
-            <div class="label">[03_TRANSMISSIONS]</div>
-            <div class="substack-box">
-                <h2 style="font-family: var(--font-display); margin: 0;">LATEST FROM SUBSTACK</h2>
-                <p style="font-weight: bold; margin-top: 15px;">
-                    "Failure is not a flaw, but a data point. Our recent garment stress tests reveal..."
-                </p>
-                <span style="color: var(--accent-red); font-weight: 900;">READ FULL TRANSMISSION >></span>
+            <span class="label">[03_SUBSTACK_TRANSMISSIONS]</span>
+            <div class="substack-frame">
+                <p><strong>LATEST DATA:</strong> Connecting to Substack API...</p>
+                <a href="TU_LINK_DE_SUBSTACK" style="text-decoration: underline;">Click here to read primary transmissions >></a>
             </div>
         </section>
 
         <section>
-            <div class="label">[04_CONNECT]</div>
-            <div class="content-large">
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">TIKTOK</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">INSTAGRAM</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">SUBSTACK</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">LINKEDIN</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">YOUTUBE</a>
+            <span class="label">[04_CONNECT_PROTOCOL]</span>
+            <div style="font-family: var(--font-display); font-size: 2rem;">
+                <a href="LINK_TIKTOK">> TIKTOK</a><br>
+                <a href="LINK_INSTAGRAM">> INSTAGRAM</a><br>
+                <a href="LINK_LINKEDIN">> LINKEDIN</a><br>
+                <a href="LINK_YOUTUBE">> YOUTUBE</a><br>
+                <a href="<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROTNIVKA | Tactics & Identity Engineering</title>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --surface-silver: #C0C0C0;
+            --ink-asphalt: #1A1A1A;
+            --accent-red: #340001;
+            --font-display: 'Archivo Black', sans-serif;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        body { 
+            background-color: var(--surface-silver); 
+            color: var(--ink-asphalt); 
+            font-family: var(--font-main); 
+            margin: 0; padding: 0; overflow-x: hidden;
+        }
+
+        .page-container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 80px 25px; }
+
+        /* HEADER V.10 STYLE (KA_ OUTLINE) */
+        header { margin-bottom: 120px; }
+        h1 { 
+            font-family: var(--font-display);
+            font-size: clamp(4rem, 20vw, 12rem);
+            line-height: 0.8; margin: 0;
+            text-transform: uppercase; letter-spacing: -5px;
+        }
+        .ka-outline {
+            -webkit-text-stroke: 2px var(--ink-asphalt);
+            color: transparent;
+        }
+
+        .tagline {
+            font-family: var(--font-display);
+            font-size: clamp(1rem, 3vw, 1.8rem);
+            margin-top: 20px; max-width: 600px;
+            text-transform: uppercase; line-height: 1;
+            border-left: 15px solid var(--accent-red);
+            padding-left: 20px;
+        }
+
+        section { border-top: 2px solid var(--ink-asphalt); padding: 60px 0; }
+        .label { font-family: var(--font-display); font-size: 0.75rem; color: var(--accent-red); margin-bottom: 20px; display: block; }
+
+        /* INTERACTIVE SERVICES */
+        .service-item {
+            font-family: var(--font-display);
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            padding: 20px 0;
+            border-bottom: 1px dashed var(--ink-asphalt);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .service-item:hover { color: var(--accent-red); padding-left: 15px; }
+
+        /* BOXES DE INFORMACIÓN (MODALES SIMPLES) */
+        .service-detail {
+            display: none;
+            background: var(--ink-asphalt);
+            color: var(--surface-silver);
+            padding: 20px;
+            margin-top: -1px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-left: 10px solid var(--accent-red);
+        }
+
+        /* MEDIA LOGS */
+        .image-container { width: 100%; border: 1px solid var(--ink-asphalt); margin: 40px 0; background: #000; position: relative; }
+        .image-container img { width: 100%; display: block; filter: grayscale(1) contrast(1.2); opacity: 0.8; }
+        .img-tag { position: absolute; top: 10px; left: 10px; background: var(--accent-red); color: white; padding: 5px; font-size: 0.6rem; font-weight: 900; }
+
+        /* SUBSTACK EMBED AREA */
+        .substack-frame { border: 4px solid var(--ink-asphalt); background: white; min-height: 200px; padding: 20px; }
+
+        footer { 
+            border-top: 10px solid var(--ink-asphalt); padding: 40px 0; 
+            font-family: var(--font-display); font-size: 0.7rem;
+            display: flex; justify-content: space-between;
+        }
+        
+        a { color: inherit; text-decoration: none; transition: 0.2s; }
+        a:hover { color: var(--accent-red); }
+
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+        <header>
+            <h1>ROTNIV<br><span class="ka-outline">KA_</span></h1>
+            <div class="tagline">Engineering precision meets the disruptive edge of identity.</div>
+        </header>
+
+        <section>
+            <span class="label">[01_MEDIA_LOGS]</span>
+            <div class="image-container">
+                <span class="img-tag">DATA_VISUAL_01</span>
+                <img src="assets/tu_imagen_1.jpg" alt="Insert analysis here">
+            </div>
+        </section>
+
+        <section>
+            <span class="label">[02_SERVICES_LIST]</span>
+            
+            <div class="service-item" onclick="toggleBox('s1')">CREATIVE DIRECTION</div>
+            <div id="s1" class="service-detail">Strategic oversight merging conceptual rebellion with market viability.</div>
+
+            <div class="service-item" onclick="toggleBox('s2')">MATERIALS CONSULTANCY</div>
+            <div id="s2" class="service-detail">Technical analysis of polymer behavior and textile integrity.</div>
+
+            <div class="service-item" onclick="toggleBox('s3')">GARMENT FAILURE SIMULATION</div>
+            <div id="s3" class="service-detail">Predictive modeling of material stress and structural lifespan.</div>
+
+            <div class="service-item" onclick="toggleBox('s4')">CIRCULARITY STRATEGIES</div>
+            <div id="s4" class="service-detail">Engineering closed-loop systems for sustainable manufacturing.</div>
+        </section>
+
+        <section>
+            <span class="label">[03_SUBSTACK_TRANSMISSIONS]</span>
+            <div class="substack-frame">
+                <p><strong>LATEST DATA:</strong> Connecting to Substack API...</p>
+                <a href="https://rotnivka.substack.com" style="text-decoration: underline;">Click here to read primary transmissions >></a>
+            </div>
+        </section>
+
+        <section>
+            <span class="label">[04_CONNECT_PROTOCOL]</span>
+            <div style="font-family: var(--font-display); font-size: 2rem;">
+                <a href="https://tiktok.com/@rotnivka">> TIKTOK</a><br>
+                <a href="LINK_INSTAGRAM">> INSTAGRAM</a><br>
+                <a href="LINK_LINKEDIN">> LINKEDIN</a><br>
+                <a href="LINK_YOUTUBE">> YOUTUBE</a><br>
+                <a href="https://rotnivka.substack.com">> SUBSTACK</a>
             </div>
         </section>
 
         <footer>
             <span>© 2026 ROTNIVKA</span>
-            <span>FOUNDED BY ANYA ROTNIVKA</span>
+            <span>DESIGNED BY ANYA ROTNIVKA</span>
             <span>ALL RIGHTS RESERVED</span>
         </footer>
-
     </div>
 
+    <script>
+        function toggleBox(id) {
+            var box = document.getElementById(id);
+            if (box.style.display === "block") {
+                box.style.display = "none";
+            } else {
+                box.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>">> SUBSTACK</a>
+            </div>
+        </section>
+
+        <footer>
+            <span>© 2026 ROTNIVKA</span>
+            <span>DESIGNED BY ANYA ROTNIVKA</span>
+            <span>ALL RIGHTS RESERVED</span>
+        </footer>
+    </div>
+
+    <script>
+        function toggleBox(id) {
+            var box = document.getElementById(id);
+            if (box.style.display === "block") {
+                box.style.display = "none";
+            } else {
+                box.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
