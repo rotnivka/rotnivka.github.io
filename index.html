@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTNIVKA | Material & Identity Architecture</title>
     <style>
-        /* INVERSIÓN ESTRATÉGICA DE MATERIALES */
         :root {
-            --bg-metal: #C0C0C0;       /* Plata como base */
-            --text-ink: #1A1A1A;       /* Asfalto como texto */
-            --accent-heat: #340001;    /* Rojo Óxido para pops */
+            --bg-metal: #C0C0C0;  
+            --text-ink: #1A1A1A;  
+            --accent-heat: #340001; 
         }
 
         body { 
@@ -17,96 +16,157 @@
             color: var(--text-ink); 
             font-family: 'Courier New', Courier, monospace; 
             margin: 0;
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            min-height: 100vh;
-            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 20px;
+            box-sizing: border-box;
         }
 
-        /* EL CONTENEDOR V.02 CON LA SOMBRA ROJA */
-        .main-frame { 
-            border: 4px solid var(--text-ink); 
-            padding: 40px 20px; 
-            width: 100%; 
+        .content-wrapper {
+            width: 100%;
             max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .section-frame { 
+            border: 3px solid var(--text-ink); 
+            padding: 45px 25px; 
             position: relative;
             box-shadow: 12px 12px 0px var(--accent-heat);
             background-color: var(--bg-metal);
         }
 
-        /* ETIQUETA TÉCNICA */
         .label {
             position: absolute;
-            top: -15px;
-            left: 20px;
+            top: -20px; 
+            left: 15px;
             background: var(--bg-metal);
-            padding: 0 10px;
-            font-size: 0.7rem;
+            padding: 0 12px;
+            font-size: 0.65rem;
             color: var(--accent-heat);
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         h1 { 
             font-family: 'Arial Black', sans-serif;
-            font-size: clamp(2.5rem, 10vw, 5rem);
+            font-size: clamp(2.5rem, 12vw, 4.5rem);
             line-height: 0.85;
             margin: 0;
             text-transform: uppercase;
-            word-wrap: break-word;
-            color: var(--text-ink);
+            letter-spacing: -2px;
         }
 
-        .subtitle {
-            margin-top: 25px;
-            border-top: 2px solid var(--accent-heat); /* Línea de acento roja */
-            padding-top: 15px;
-            color: var(--text-ink);
-            font-size: 0.8rem;
+        h2 {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            margin: 0 0 20px 0;
+            display: inline-block;
+            background-color: var(--text-ink);
+            color: var(--bg-metal);
+            padding: 2px 8px;
+        }
+
+        .text-content {
+            font-size: 0.85rem;
+            line-height: 1.6;
             font-weight: bold;
-            letter-spacing: 1.5px;
-            line-height: 1.4;
+            text-align: justify;
         }
 
-        .status-bar {
-            margin-top: 40px;
+        .services-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .services-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(26, 26, 26, 0.2);
+            font-weight: bold;
+            font-size: 0.85rem;
             display: flex;
             justify-content: space-between;
-            font-size: 0.6rem;
-            color: var(--accent-heat);
-            font-weight: bold;
         }
 
-        /* CURSOR INDUSTRIAL */
+        .services-list li::after {
+            content: "[ACTIVE]";
+            color: var(--accent-heat);
+            font-size: 0.6rem;
+        }
+
+        .red-highlight { color: var(--accent-heat); }
+
+        .copyright-footer {
+            margin-top: 80px;
+            text-align: center;
+            font-size: 0.65rem;
+            color: var(--text-ink);
+            font-weight: bold;
+            letter-spacing: 1px;
+            width: 100%;
+            padding-bottom: 40px;
+            border-top: 2px solid var(--text-ink);
+            padding-top: 20px;
+            max-width: 600px;
+        }
+
         .cursor {
             display: inline-block;
-            width: 10px;
-            height: 1rem;
+            width: 8px;
+            height: 14px;
             background: var(--accent-heat);
             animation: blink 1s infinite;
+            vertical-align: middle;
         }
 
         @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
-    <div class="main-frame">
-        <div class="label">ID:ARCH_SYSTEM_V.02_REV</div>
+
+    <div class="content-wrapper">
         
-        <h1>ROTNIVKA_</h1>
-        
-        <div class="subtitle">
-            MATERIAL & IDENTITY ARCHITECTURE<br>
-            // BERLIN, DE <span class="cursor"></span>
+        <div class="section-frame">
+            <div class="label">ID:ARCH_SYSTEM_V.02_REV</div>
+            <h1>ROTNIV<br>KA_</h1>
+            <p style="font-size: 0.75rem; margin-top: 25px; font-weight: bold; letter-spacing: 1px;">
+                // MATERIAL & IDENTITY ARCHITECTURE <span class="cursor"></span>
+            </p>
         </div>
 
-        <div class="status-bar">
-            <span>CORE: ACTIVE</span>
-            <span>STRATEGY: ONLINE</span>
-            <span>2026©</span>
+        <div class="section-frame">
+            <div class="label">MODULE: 01_ABOUT</div>
+            <h2>MISSION_STATEMENT</h2>
+            <div class="text-content">
+                ROTNIVKA BUILDS STRUCTURED AESTHETIC SYSTEMS BY MERGING  <span class="red-highlight">MATERIAL INTELLIGENCE</span>
+                WITH  <span class="red-highlight">SYSTEM-BASED THINKING</span>. I DEVELOP COHERENT, NON-TREND-DRIVEN FRAMEWORKS
+                DESIGNED FOR LONG-TERM IDENTITY AND FUNCTIONAL PERFORMANCE.
+            </div>
         </div>
+
+        <div class="section-frame">
+            <div class="label">MODULE: 02_SERVICES</div>
+            <h2>CORE_SERVICES</h2>
+            <ul class="services-list">
+                <li>MATERIALS CONSULTANCY</li>
+                <li>IDENTITY ARCHITECTURE</li>
+                <li>CREATIVE DIRECTION</li>
+                <li>QUALITY CONTROL ANALYSIS</li>
+            </ul>
+        </div>
+
     </div>
+
+    <footer class="copyright-footer">
+        © 2026 <span class="red-highlight">ROTNIVKA</span>. All rights reserved. <br>
+        LOC: BERLIN, DE // SYS_STATUS: <span class="red-highlight">OPERATIONAL</span>
+    </footer>
+
 </body>
 </html>
-
