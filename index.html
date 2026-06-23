@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTNIVKA | Material & Identity Architecture</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --surface-silver: #C0C0C0;
@@ -20,7 +20,7 @@
             font-family: var(--font-main); 
             margin: 0; padding: 0; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.01em;
+            letter-spacing: -0.02em;
         }
 
         .fluid-layout { 
@@ -28,9 +28,9 @@
             box-sizing: border-box;
         }
 
-        /* 1. HEADER CORREGIDO (ROTNIVKA_ EN UNA LÍNEA) */
+        /* 1. HEADER REFORMADO: ROTNIVKA SÓLIDO COMPLETO */
         header { 
-            margin-bottom: 120px; 
+            margin-bottom: 100px; 
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
@@ -43,49 +43,42 @@
             font-size: clamp(2.5rem, 9.5vw, 8rem);
             line-height: 0.9; margin: 0;
             text-transform: uppercase; 
-            letter-spacing: -0.04em;
-        }
-        
-        .ka-outline {
-            -webkit-text-stroke: 2px var(--ink-asphalt);
-            color: transparent;
+            letter-spacing: -0.05em;
         }
 
         .meta-header {
             font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.5;
         }
 
-        /* 2 & 3. COMPOSICIÓN BALANCEADA / ESPACIO EDITORIAL ABIERTO */
+        /* 2. DISEÑO EDITORIAL CON TIPOGRAFÍA EDGY Y COMBINADA */
         .editorial-split {
             display: grid;
-            grid-template-columns: 0.8fr 1.2fr;
-            gap: 80px;
+            grid-template-columns: 0.6fr 1.4fr;
+            gap: 60px;
             margin-bottom: 140px;
-            align-items: center;
+            align-items: start;
         }
 
         @media (max-width: 992px) {
-            .editorial-split { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
+            .editorial-split { grid-template-columns: 1fr; gap: 30px; margin-bottom: 80px; }
             header { margin-bottom: 60px; }
             .fluid-layout { padding: 40px 20px; }
         }
 
-        /* REDISEÑO DEL COPY (MINIMALISTA, EDGY, RESPIRA) */
         .manifesto-box {
-            max-width: 680px;
+            max-width: 850px;
         }
 
+        /* El bloque ahora comparte el peso visual y la fuerza del bloque inferior */
         .manifesto-text {
-            font-size: clamp(1.2rem, 2.5vw, 1.9rem);
-            font-weight: 400;
-            line-height: 1.4;
-            color: var(--ink-asphalt);
-            margin: 0;
-        }
-        
-        .manifesto-text strong {
+            font-family: var(--font-display);
+            font-size: clamp(1.4rem, 3.2vw, 2.6rem);
             font-weight: 900;
+            line-height: 1.05;
+            color: var(--ink-asphalt);
             text-transform: uppercase;
+            letter-spacing: -0.04em;
+            margin: 0;
         }
 
         /* GALERÍA ASIMÉTRICA DISTRIBUIDA */
@@ -120,7 +113,7 @@
         }
 
         .section-title {
-            font-family: var(--font-display); font-size: 0.75rem; text-transform: uppercase; color: var(--accent-red); letter-spacing: 0.1em;
+            font-family: var(--font-main); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: var(--accent-red); letter-spacing: 0.1em;
         }
 
         .services-list { width: 100%; }
@@ -131,12 +124,13 @@
         .service-row:first-child { padding-top: 0; }
         
         .service-trigger { 
+            font-family: var(--font-display);
             font-weight: 900; font-size: clamp(1.2rem, 2.5vw, 2.2rem); text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; letter-spacing: -0.02em;
         }
-        .service-trigger span:last-child { font-size: 1.1rem; font-weight: 300; }
+        .service-trigger span:last-child { font-size: 1.1rem; font-weight: 300; font-family: var(--font-main); }
 
         .service-content {
-            display: none; font-size: 1rem; line-height: 1.5; margin-top: 20px; max-width: 650px; font-weight: 400; color: #222;
+            display: none; font-size: 1rem; line-height: 1.5; margin-top: 20px; max-width: 650px; font-weight: 400; color: #1a1a1a; text-transform: none;
         }
 
         .action-link {
@@ -156,7 +150,7 @@
         }
         .directory-links a:hover { color: var(--accent-red); transform: translateX(10px); }
 
-        /* FOOTER EXTENDIDO Y SEPARADO */
+        /* FOOTER EXTENDIDO */
         footer { 
             border-top: 1px solid var(--ink-asphalt); padding-top: 40px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
         }
@@ -168,19 +162,18 @@
         
         <!-- HEADER MODULE CORREGIDO -->
         <header>
-            <div class="brand-title">ROTNIV<span class="ka-outline">KA_</span></div>
+            <div class="brand-title">ROTNIVKA_</div>
             <div class="meta-header">Material & Identity Architecture<br>// Worldwide Node</div>
         </header>
 
-        <!-- EDITORIAL SPLIT BLOCK (REDISEÑO DE ESPACIOS) -->
+        <!-- EDITORIAL SPLIT BLOCK (NUEVA IDENTIDAD TIPOGRÁFICA) -->
         <div class="editorial-split">
-            <!-- Espacio libre/técnico a la izquierda para empujar el texto hacia el centro-derecha -->
-            <div class="meta-header" style="opacity: 0.5;">[PROT_V.17 // SYSTEM_LAUNCH]</div>
+            <div class="meta-header" style="opacity: 0.4;">[SYSTEM_NODE_v1.18]</div>
             
             <div class="manifesto-box">
-                <p class="manifesto-text">
-                    Engineering the future of avant-garde fashion and materials. We build <strong>disruptive identity systems</strong> where advanced material intelligence dictating structural form meets edgy, high-end design.
-                </p>
+                <h2 class="manifesto-text">
+                    Engineering the future of avant-garde fashion and materials. We build disruptive identity systems where advanced material intelligence dictating structural form meets edgy, high-end design.
+                </h2>
             </div>
         </div>
 
@@ -208,7 +201,8 @@
                     </div>
                 </div>
 
-                <div class="service-row" onclick="toggleService('sv2') text-transform: uppercase;">
+                <!-- CORREGIDO EL TYPO AQUÍ PARA QUE EL EVENTO ONCLICK ABRA CORRECTAMENTE -->
+                <div class="service-row" onclick="toggleService('sv2')">
                     <div class="service-trigger"><span>02 / Materials & Textile Consultancy</span><span>+</span></div>
                     <div id="sv2" class="service-content">
                         Technical evaluation of advanced textiles, polymer dynamics, and high-performance synthetics. Designing execution strategies for next-generation avant-garde structures.
@@ -224,7 +218,7 @@
             </div>
         </div>
 
-        <!-- BOTTOM AREA: SUBSTACK + SOCIAL DIRECTORY (EQUILIBRADO EN 2 COLUMNAS) -->
+        <!-- BOTTOM AREA (IGUAL A LA CAPTURA APRECIADA) -->
         <div class="bottom-grid">
             <div>
                 <span class="section-title" style="display:block; margin-bottom:20px;">Primary Transmissions</span>
@@ -258,8 +252,13 @@
         function toggleService(id) {
             const element = document.getElementById(id);
             const isOpen = element.style.display === "block";
+            
+            // Cierra los otros paneles abiertos
             document.querySelectorAll('.service-content').forEach(el => el.style.display = "none");
-            if (!isOpen) { element.style.display = "block"; }
+            
+            if (!isOpen) { 
+                element.style.display = "block"; 
+            }
         }
     </script>
 </body>
