@@ -18,68 +18,58 @@
             background-color: var(--surface-silver); 
             color: var(--ink-asphalt); 
             font-family: var(--font-main); 
-            margin: 0;
-            padding: 0;
-            overflow-x: hidden;
+            margin: 0; padding: 0; overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .page-container {
-            width: 100%;
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 80px 25px;
+        .page-container { 
+            width: 100%; max-width: 1100px; margin: 0 auto; padding: 40px 20px; 
+            box-sizing: border-box;
         }
 
-        /* HEADER DESESTRUCTURADO */
-        header {
-            margin-bottom: 150px;
-            position: relative;
-        }
-
+        /* HEADER DESESTRUCTURADO V.12 + KA_ V.10 (OUTLINE) */
+        header { margin-bottom: 80px; }
+        
         h1 { 
             font-family: var(--font-display);
-            font-size: clamp(4rem, 20vw, 12rem);
-            line-height: 0.8;
-            margin: 0;
-            text-transform: uppercase;
-            letter-spacing: -5px;
-            color: var(--ink-asphalt);
+            font-size: clamp(3.5rem, 18vw, 11rem);
+            line-height: 0.8; margin: 0;
+            text-transform: uppercase; letter-spacing: -5px;
+        }
+        
+        .ka-outline {
+            -webkit-text-stroke: 2px var(--ink-asphalt);
+            color: transparent;
         }
 
         .tagline {
             font-family: var(--font-display);
-            font-size: clamp(1rem, 3vw, 1.8rem);
-            margin-top: 20px;
-            max-width: 600px;
-            text-transform: uppercase;
-            line-height: 1;
+            font-size: clamp(0.9rem, 2.5vw, 1.6rem);
+            margin-top: 30px; max-width: 600px;
+            text-transform: uppercase; line-height: 1.1;
             border-left: 15px solid var(--accent-red);
             padding-left: 20px;
         }
 
-        /* SECCIONES ABIERTAS */
+        /* SECCIONES ABIERTAS ESTILO V.12 (RESPONSIVAS) */
         section {
             border-top: 2px solid var(--ink-asphalt);
-            padding: 60px 0;
+            padding: 40px 0;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            transition: all 0.4s ease;
+            gap: 30px;
         }
 
         @media (max-width: 768px) {
-            section { grid-template-columns: 1fr; }
+            section { grid-template-columns: 1fr; padding: 30px 0; }
+            header { margin-bottom: 50px; }
         }
 
-        section:hover {
-            background-color: rgba(52, 0, 1, 0.05); /* Flash de rojo sutil */
-        }
-
-        .label {
-            font-family: var(--font-display);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            color: var(--accent-red);
+        .label { 
+            font-family: var(--font-display); 
+            font-size: 0.7rem; 
+            color: var(--accent-red); 
+            letter-spacing: 1px; 
         }
 
         .content-large {
@@ -89,77 +79,58 @@
             text-transform: uppercase;
         }
 
-        /* IMPLEMENTACIÓN DE IMÁGENES (CAPAS) */
+        /* IMPLEMENTACIÓN DE IMÁGENES ASIMÉTRICAS (V.12) */
         .image-container {
-            width: 100%;
-            background: var(--ink-asphalt);
-            aspect-ratio: 16/9;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid var(--ink-asphalt);
+            width: 100%; border: 1px solid var(--ink-asphalt); margin: 20px 0; background: #000; position: relative; overflow: hidden;
         }
+        .image-container img { width: 100%; display: block; filter: grayscale(1) contrast(1.1); opacity: 0.7; }
+        .img-tag { position: absolute; top: 15px; left: 15px; background: var(--accent-red); color: white; padding: 5px 10px; font-size: 0.6rem; font-weight: 900; z-index: 10; }
 
-        .image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(120%);
-            opacity: 0.8;
-        }
-
-        .image-overlay-text {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: var(--accent-red);
-            color: white;
-            font-size: 0.6rem;
-            padding: 2px 5px;
-            font-weight: bold;
-        }
-
-        /* SERVICIOS INTERACTIVOS */
+        /* SERVICIOS INTERACTIVOS CON CAJA DESPLEGABLE */
         .service-item {
             font-family: var(--font-display);
-            font-size: clamp(1rem, 2.5vw, 1.5rem);
-            padding: 15px 0;
+            font-size: clamp(1.1rem, 3.5vw, 2.2rem);
+            padding: 20px 0;
             border-bottom: 1px dashed var(--ink-asphalt);
             cursor: pointer;
-            transition: padding-left 0.3s ease;
+            transition: 0.3s;
+            text-transform: uppercase;
         }
+        .service-item:hover { color: var(--accent-red); padding-left: 15px; }
 
-        .service-item:hover {
-            color: var(--accent-red);
-            padding-left: 20px;
-        }
-
-        /* SUBSTACK EMBED SIMULATION */
-        .substack-box {
-            grid-column: 1 / -1;
-            border: 5px solid var(--ink-asphalt);
-            padding: 30px;
-            margin-top: 20px;
-            cursor: pointer;
-        }
-
-        .substack-box:hover {
+        .service-detail {
+            display: none;
             background: var(--ink-asphalt);
             color: var(--surface-silver);
+            padding: 25px;
+            margin-top: -1px;
+            font-size: 0.85rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-left: 15px solid var(--accent-red);
+            line-height: 1.4;
         }
 
-        /* FOOTER */
-        footer {
-            margin-top: 100px;
-            padding: 40px 0;
-            border-top: 10px solid var(--ink-asphalt);
-            font-family: var(--font-display);
-            font-size: 0.7rem;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
+        /* BOTÓN DE ACCIÓN GUMROAD */
+        .cta-button {
+            display: inline-block; margin-top: 15px; background: var(--accent-red); color: white; padding: 10px 20px; font-family: var(--font-display); font-size: 0.8rem; text-decoration: none; transition: 0.3s; border: none; cursor: pointer;
+        }
+        .cta-button:hover { background: white; color: var(--ink-asphalt); }
+
+        /* SUBSTACK EMBED CONTAINER */
+        .substack-embed-box {
+            width: 100%; background: transparent; margin-top: 10px;
         }
 
+        /* NETWORKS */
+        .network-list a { 
+            color: inherit; text-decoration: none; display: block; font-family: var(--font-display); font-size: clamp(1.5rem, 5vw, 2.5rem); line-height: 1.2; transition: 0.2s; 
+        }
+        .network-list a:hover { color: var(--accent-red); padding-left: 10px; }
+
+        footer { 
+            border-top: 10px solid var(--ink-asphalt); padding: 40px 0; font-family: var(--font-display); font-size: 0.65rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
+        }
     </style>
 </head>
 <body>
@@ -167,57 +138,89 @@
     <div class="page-container">
         
         <header>
-            <h1>ROTNIV<br>KA_</h1>
+            <h1>ROTNIV<br><span class="ka-outline">KA_</span></h1>
             <div class="tagline">Engineering precision meets the disruptive edge of identity.</div>
         </header>
 
-        <div class="image-container">
-            <img src="https://via.placeholder.com/1200x675/1A1A1A/C0C0C0?text=MATERIAL_ANALYSIS_LOG" alt="Simulation log">
-            <div class="image-overlay-text">IMG_01 // GARMENT_FAILURE_SIMULATION</div>
-        </div>
-
+        <!-- MODULE 01: MEDIA LOGS (ASSETS LOCALES) -->
         <section>
-            <div class="label">[01_ABOUT]</div>
-            <div class="content-large">
-                Founded in 2026 by Anya Rotnivka. Operating at the intersection of material science and aesthetic rebellion. Specializing in identity systems engineered for the vanguard.
+            <span class="label">[01_AESTHETIC_LOGS]</span>
+            <div>
+                <div class="image-container">
+                    <span class="img-tag">VISUAL_ASSET_01 // d90c4e09c260fb32c54d1ce9d1127108.jpg</span>
+                    <!-- Reemplaza el src con la ruta a tus archivos subidos -->
+                    <img src="assets/d90c4e09c260fb32c54d1ce9d1127108.jpg" alt="Simulation Analysis 01">
+                </div>
             </div>
         </section>
 
+        <!-- MODULE 02: ABOUT -->
         <section>
-            <div class="label">[02_SERVICES]</div>
+            <span class="label">[02_MISSION_LOG]</span>
+            <div class="content-large">
+                Operating at the intersection of material science and aesthetic rebellion. Specializing in identity systems engineered for the vanguard.
+            </div>
+        </section>
+
+        <!-- MODULE 03: INTERACTIVE SERVICES -->
+        <section>
+            <span class="label">[03_OPERATIONAL_CAPABILITIES]</span>
             <div class="services-list">
-                <div class="service-item">CREATIVE DIRECTION</div>
-                <div class="service-item">MATERIALS CONSULTANCY</div>
-                <div class="service-item">GARMENT FAILURE SIMULATION</div>
-                <div class="service-item">CIRCULARITY STRATEGIES</div>
-                <div class="service-item">IDENTITY ARCHITECTURE</div>
+                
+                <div class="service-item" onclick="toggleBox('s1')">CREATIVE DIRECTION</div>
+                <div id="s1" class="service-detail">
+                    Tactical brand oversight. Merging conceptual rebellion with structural market viability.
+                    <br><br>
+                    <!-- Link de prueba Gumroad con Overlay -->
+                    <a class="gumroad-button cta-button" href="https://gumroad.com/l/tu_link_de_producto" target="_blank">[INITIATE_STRATEGY]</a>
+                </div>
+
+                <div class="service-item" onclick="toggleBox('s2')">MATERIALS CONSULTANCY</div>
+                <div id="s2" class="service-detail">
+                    Technical analysis of polymer behavior, textile integrity, and advanced architectural garment systems.
+                </div>
+
+                <div class="service-item" onclick="toggleBox('s3')">GARMENT_FAILURE_SIMULATION</div>
+                <div id="s3" class="service-detail">
+                    Predictive stress testing. Analyzing garment lifespan, material degradation, and textile vulnerabilities.
+                </div>
+
+                <div class="service-item" onclick="toggleBox('s4')">CIRCULARITY STRATEGIES</div>
+                <div id="s4" class="service-detail">
+                    Engineering closed-loop ecosystems, structural sustainability protocols, and tactical material lifecycles.
+                </div>
+
             </div>
         </section>
 
-        <div class="image-container" style="max-width: 60%; align-self: flex-end; margin-left: auto;">
-            <img src="https://via.placeholder.com/800x450/1A1A1A/C0C0C0?text=IDENTITY_DYNAMICS" alt="Identity Dynamics">
-            <div class="image-overlay-text">IMG_02 // SYSTEM_DYNAMICS</div>
-        </div>
-
+        <!-- MODULE 04: MEDIA LOGS 02 -->
         <section>
-            <div class="label">[03_TRANSMISSIONS]</div>
-            <div class="substack-box">
-                <h2 style="font-family: var(--font-display); margin: 0;">LATEST FROM SUBSTACK</h2>
-                <p style="font-weight: bold; margin-top: 15px;">
-                    "Failure is not a flaw, but a data point. Our recent garment stress tests reveal..."
-                </p>
-                <span style="color: var(--accent-red); font-weight: 900;">READ FULL TRANSMISSION >></span>
+            <span class="label">[04_SYSTEM_DYNAMICS]</span>
+            <div class="image-container" style="max-width: 80%; margin-left: auto;">
+                <span class="img-tag">VISUAL_ASSET_02 // c2c044364e0a7c0f7119201470dcb692.jpg</span>
+                <img src="assets/c2c044364e0a7c0f7119201470dcb692.jpg" alt="Simulation Analysis 02">
             </div>
         </section>
 
-        <section>
-            <div class="label">[04_CONNECT]</div>
-            <div class="content-large">
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">TIKTOK</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">INSTAGRAM</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">SUBSTACK</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">LINKEDIN</a>
-                <a href="#" style="color: inherit; text-decoration: none; display: block;">YOUTUBE</a>
+<!-- MODULE 05: SUBSTACK SIGNUP EMBED (AUTOMÁTICO) -->
+<section>
+    <span class="label">[05_PRIMARY_TRANSMISSIONS]</span>
+    <div class="substack-embed-box">
+        <!-- Tu código oficial optimizado para el diseño asimétrico y mobile -->
+        <iframe src="https://rotnivka.substack.com/embed" width="100%" height="320" style="border: 2px solid var(--ink-asphalt); background: transparent;" frameborder="0" scrolling="no"></iframe>
+    </div>
+</section>
+
+        <!-- MODULE 06: NETWORKS (CONNECT) -->
+        <section id="connect">
+            <span class="label">[06_NETWORK_PROTOCOL]</span>
+            <div class="network-list">
+                <!-- Reemplaza el '#' con tus URLs completas -->
+                <a href="[https://rotnivka.substack.com](https://rotnivka.substack.com)" target="_blank">> SUBSTACK</a>
+                <a href="[https://www.tiktok.com/@rotnivka](https://www.tiktok.com/@rotnivka)" target="_blank">> TIKTOK</a>
+                <a href="#" target="_blank">> LINKEDIN</a>
+                <a href="[https://www.youtube.com/@rotnivka](https://www.youtube.com/@rotnivka)" target="_blank">> YOUTUBE</a>
+                <a href="[https://www.instagram.com/rotnivka/](https://www.instagram.com/rotnivka/)" target="_blank">> INSTAGRAM</a>
             </div>
         </section>
 
@@ -228,16 +231,21 @@
         </footer>
 
     </div>
+
+    <!-- SCRIPT DE JAVASCRIPT: INTERACTIVIDAD Y OVERLAY DE GUMROAD -->
+    <script src="https://gumroad.com/js/embed.js"></script>
     <script>
         function toggleBox(id) {
-            var box = document.getElementById(id);
-            if (box.style.display === "block") {
-                box.style.display = "none";
-            } else {
-                box.style.display = "block";
+            const boxes = document.querySelectorAll('.service-detail');
+            const target = document.getElementById(id);
+            const isVisible = target.style.display === "block";
+            
+            boxes.forEach(b => b.style.display = "none");
+            
+            if (!isVisible) {
+                target.style.display = "block";
             }
         }
     </script>
 </body>
 </html>
-                    
