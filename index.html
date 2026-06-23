@@ -4,47 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ROTNIVKA | Material & Identity Architecture</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --surface-silver: #C0C0C0;
             --ink-asphalt: #1A1A1A;
             --accent-red: #340001;
             --font-display: 'Archivo Black', sans-serif;
-            --font-mono: 'JetBrains Mono', monospace;
+            --font-main: 'Inter', sans-serif;
         }
 
         body { 
             background-color: var(--surface-silver); 
             color: var(--ink-asphalt); 
-            font-family: var(--font-mono); 
+            font-family: var(--font-main); 
             margin: 0; padding: 0; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
+            letter-spacing: -0.02em;
         }
 
-        .terminal-container { 
-            width: 100%; max-width: 1200px; margin: 0 auto; padding: 40px 20px; 
+        .fluid-layout { 
+            width: 100%; max-width: 1400px; margin: 0 auto; padding: 60px 30px; 
             box-sizing: border-box;
         }
 
-        /* COMPONENT: TECHNICAL GRID HEADER */
+        /* 1. HEADER: ROTNIVKA IN ONE LINE + KA_ OUTLINE V.10 */
         header { 
-            border: 2px solid var(--ink-asphalt); 
-            padding: 30px; 
-            margin-bottom: 40px;
-            background: rgba(26, 26, 26, 0.03);
-            position: relative;
+            margin-bottom: 100px; 
+            display: flex; 
+            flex-direction: column;
+            gap: 20px;
         }
         
-        .sys-status {
-            position: absolute; top: 10px; right: 20px; font-size: 0.75rem; font-weight: 700; color: var(--accent-red);
-        }
-
-        h1 { 
+        .brand-title { 
             font-family: var(--font-display);
-            font-size: clamp(3rem, 14vw, 8.5rem);
-            line-height: 0.85; margin: 0;
-            text-transform: uppercase; letter-spacing: -3px;
+            font-size: clamp(2.5rem, 11vw, 8.5rem);
+            line-height: 0.9; margin: 0;
+            text-transform: uppercase; 
+            letter-spacing: -0.05em;
+            white-space: nowrap;
         }
         
         .ka-outline {
@@ -52,193 +50,191 @@
             color: transparent;
         }
 
-        .meta-data {
-            display: flex; gap: 30px; margin-top: 20px; font-size: 0.75rem; border-top: 1px dashed var(--ink-asphalt); padding-top: 15px; text-transform: uppercase;
+        .meta-header {
+            font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 10px;
         }
 
-        /* COMPONENT: TACTICAL SECTIONS */
-        .grid-layout {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;
+        /* 2. COPY UNIFICADO & ESPACIOS LIBRES (EDGY & DISRUPTIVE) */
+        .manifesto-section {
+            margin-bottom: 120px;
+            max-width: 900px;
+        }
+
+        .manifesto-text {
+            font-size: clamp(1.5rem, 4vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -0.04em;
+            margin: 0;
+        }
+
+        /* MEDIA BLOCKS ASIMÉTRICOS (ESTILO EDITORIAL) */
+        .gallery-block {
+            width: 100%; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; margin-bottom: 120px; align-items: start;
         }
 
         @media (max-width: 768px) {
-            .grid-layout { grid-template-columns: 1fr; gap: 30px; }
-            header { padding: 20px; }
+            .gallery-block { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
+            header { margin-bottom: 60px; }
+            .manifesto-section { margin-bottom: 80px; }
         }
 
-        .panel {
-            border: 2px solid var(--ink-asphalt); padding: 30px; position: relative; display: flex; flex-direction: column; justify-content: space-between;
+        .image-wrapper {
+            width: 100%; background: #000; overflow: hidden;
+        }
+        .image-wrapper img { 
+            width: 100%; display: block; filter: grayscale(1) contrast(1.1); opacity: 0.85; transition: transform 0.5s ease;
+        }
+        .image-wrapper:hover img {
+            transform: scale(1.02); opacity: 1;
         }
 
-        .panel-label {
-            font-size: 0.7rem; font-weight: 800; color: var(--accent-red); margin-bottom: 20px; display: block;
+        /* 5. INTERACTIVE SERVICES (ACCORDION MINIMALISTA SIN BORDES PESADOS) */
+        .services-container {
+            max-width: 900px; margin-bottom: 120px;
         }
 
-        /* INTERACTIVE ACCORDION ARCHITECTURE */
-        .spec-row {
-            border-bottom: 1px solid var(--ink-asphalt); padding: 15px 0; cursor: pointer; transition: 0.2s;
+        .section-title {
+            font-family: var(--font-display); font-size: 0.8rem; text-transform: uppercase; color: var(--accent-red); letter-spacing: 0.1em; margin-bottom: 30px; display: block;
         }
-        .spec-row:hover { color: var(--accent-red); background: rgba(52, 0, 1, 0.05); padding-left: 10px; }
+
+        .service-row {
+            padding: 30px 0; cursor: pointer; transition: 0.3s ease; border-bottom: 1px solid rgba(26, 26, 26, 0.15);
+        }
         
-        .spec-title { font-weight: 700; font-size: 1rem; text-transform: uppercase; display: flex; justify-content: space-between; }
+        .service-trigger { 
+            font-weight: 900; font-size: clamp(1.3rem, 3vw, 2.5rem); text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; letter-spacing: -0.03em;
+        }
+        .service-trigger span:last-child { font-size: 1.2rem; font-weight: 300; }
 
-        .spec-content {
-            display: none; font-size: 0.85rem; line-height: 1.5; margin-top: 15px; padding: 15px; background: var(--ink-asphalt); color: var(--surface-silver); border-left: 5px solid var(--accent-red); text-transform: uppercase;
+        .service-content {
+            display: none; font-size: 1.05rem; line-height: 1.5; margin-top: 20px; max-width: 700px; font-weight: 400; color: #333; text-transform: none;
         }
 
-        /* RAW MEDIA BLOCK */
-        .media-frame {
-            border: 2px solid var(--ink-asphalt); width: 100%; background: #000; position: relative; overflow: hidden;
+        /* 7. GUMROAD OVERLAY BUTTON */
+        .action-link {
+            display: inline-flex; align-items: center; margin-top: 25px; background: var(--ink-asphalt); color: var(--surface-silver); text-decoration: none; padding: 12px 30px; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.3s;
         }
-        .media-frame img { width: 100%; display: block; filter: grayscale(1) contrast(1.15); opacity: 0.75; transition: 0.4s; }
-        .media-frame:hover img { opacity: 0.95; filter: grayscale(0.5); }
+        .action-link:hover { background: var(--accent-red); color: white; }
 
-        /* BUTTON PROTOCOLS */
-        .action-trigger {
-            display: inline-block; width: 100%; text-align: center; background: var(--ink-asphalt); color: var(--surface-silver); border: none; padding: 15px 0; font-family: var(--font-mono); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; cursor: pointer; transition: 0.3s; margin-top: 15px; text-decoration: none; box-sizing: border-box;
+        /* 6. SUBSTACK EMBED CLEAN INTEGRATION */
+        .substack-section {
+            max-width: 600px; margin-bottom: 120px;
         }
-        .action-trigger:hover { background: var(--accent-red); color: white; }
 
-        /* NETWORKS / LINK TERMINAL */
-        .link-directory a {
-            display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px dashed var(--ink-asphalt); color: inherit; text-decoration: none; font-weight: 700; font-size: 1.1rem;
+        /* 1. DIRECTORY / SOCIAL LINKS */
+        .directory-box {
+            margin-bottom: 100px;
         }
-        .link-directory a:hover { color: var(--accent-red); border-bottom-style: solid; }
+        .directory-links {
+            display: flex; flex-direction: column; gap: 10px;
+        }
+        .directory-links a {
+            color: inherit; text-decoration: none; font-family: var(--font-display); font-size: clamp(1.8rem, 5vw, 4rem); text-transform: uppercase; line-height: 1; letter-spacing: -0.03em; transition: 0.3s; width: fit-content;
+        }
+        .directory-links a:hover { color: var(--accent-red); transform: translateX(10px); }
 
+        /* 3. FOOTER EXPLICITO */
         footer { 
-            border: 2px solid var(--ink-asphalt); padding: 25px; font-size: 0.7rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 15px; font-weight: 700;
+            border-top: 2px solid var(--ink-asphalt); padding-top: 30px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="terminal-container">
+    <div class="fluid-layout">
         
         <!-- HEADER MODULE -->
         <header>
-            <div class="sys-status">SYS_STATUS: ACTIVE // V.15</div>
-            <h1>ROTNIV<br><span class="ka-outline">KA_</span></h1>
-            
-            <div class="meta-data">
-                <div>[CORE] MATERIAL & IDENTITY ARCHITECTURE</div>
-                <div>[LOC] VALENCIA_VNZLA</div>
-                <div>[REF] 10.26.04_PROT</div>
-            </div>
+            <div class="brand-title">ROTNIVK<span class="ka-outline">KA_</span></div>
+            <!-- 4. UBICACIÓN MODIFICADA -->
+            <div class="meta-header">Material & Identity Architecture // Worldwide Node</div>
         </header>
 
-        <!-- MAIN LAYOUT BLOCK 01 -->
-        <div class="grid-layout">
-            
-            <!-- PANEL: STATEMENT -->
-            <div class="panel">
-                <div>
-                    <span class="panel-label">// 01_CORE_MANIFESTO</span>
-                    <p style="font-size: 1.1rem; font-weight: 700; line-height: 1.4; margin: 0; text-transform: uppercase;">
-                        Deconstructing individual aesthetics through engineering logic. We treat identity as an architectural build—testing textile thresholds, structural longevity, and subcultural precision.
-                    </p>
-                </div>
-            </div>
-
-            <!-- PANEL: MEDIA -->
-            <div class="media-frame">
-                <img src="assets/d90c4e09c260fb32c54d1ce9d1127108.jpg" alt="Aesthetic Data Log 01">
-            </div>
-
+        <!-- 5. COPY UNIFICADO (FUTURE OF FASHION & MATERIALS) -->
+        <div class="manifesto-section">
+            <h2 class="manifesto-text">
+                Engineering the future of avant-garde fashion and materials. We build disruptive identity systems where advanced material intelligence dictating structural form meets edgy, high-end design.
+            </h2>
         </div>
 
-        <!-- MAIN LAYOUT BLOCK 02: SERVICES -->
-        <div class="grid-layout">
-            
-            <!-- PANEL: CAPABILITIES (INTERACTIVE) -->
-            <div class="panel" style="grid-column: span 1;">
-                <div>
-                    <span class="panel-label">// 02_SPECIFICATIONS_AND_SERVICES</span>
-                    
-                    <div class="spec-row" onclick="openSpec('sp1')">
-                        <div class="spec-title"><span>01 // Style Identity Architecture</span><span>[+]</span></div>
-                        <div id="sp1" class="spec-content">
-                            Systematic reconstruction of persona layers based on technical aesthetics, historical avant-garde frameworks, and structural cohesion.
-                            <a class="gumroad-button action-trigger" href="https://gumroad.com/l/tu_link_de_producto" target="_blank">Execute Architecture Order</a>
-                        </div>
-                    </div>
-
-                    <div class="spec-row" onclick="openSpec('sp2')">
-                        <div class="spec-title"><span>02 // Materials Consultancy</span><span>[+]</span></div>
-                        <div id="sp2" class="spec-content">
-                            Technical assessment of performance textiles, polymer behavior, advanced synthetics, and construction durability parameters.
-                        </div>
-                    </div>
-
-                    <div class="spec-row" onclick="openSpec('sp3')">
-                        <div class="spec-title"><span>03 // Garment Failure Simulation</span><span>[+]</span></div>
-                        <div id="sp3" class="spec-content">
-                            Predictive stress-testing models for high-end avant-garde design. Analysis of material lifecycle, degradation, and environmental resilience.
-                        </div>
-                    </div>
-
-                </div>
+        <!-- VISUAL BLOCKS (ESTILO REPOSITORIO DE IMÁGENES ASIMÉTRICO) -->
+        <div class="gallery-block">
+            <div class="image-wrapper">
+                <img src="assets/d90c4e09c260fb32c54d1ce9d1127108.jpg" alt="Material Testing Log">
             </div>
-
-            <!-- PANEL: SUBSTACK TRANSMISSION BOX -->
-            <div class="panel">
-                <div>
-                    <span class="panel-label">// 03_SUBSCRIPTION_INTERFACE</span>
-                    <p style="font-size: 0.85rem; margin-top: 0; text-transform: uppercase; font-weight: 700;">
-                        Join the primary node network to receive industrial material insights and tactical styling updates directly.
-                    </p>
-                </div>
-                <!-- SUBSTACK EMBED FORM AUTOMÁTICO -->
-                <iframe src="https://rotnivka.substack.com/embed" width="100%" height="200" style="border: 2px solid var(--ink-asphalt); background: transparent;" frameborder="0" scrolling="no"></iframe>
+            <div class="image-wrapper" style="margin-top: 60px;">
+                <img src="assets/c2c044364e0a7c0f7119201470dcb692.jpg" alt="Structural Design Stream">
             </div>
-
         </div>
 
-        <!-- MAIN LAYOUT BLOCK 03: NETWORKS & MEDIA 02 -->
-        <div class="grid-layout">
+        <!-- INTERACTIVE SERVICES MODULE -->
+        <div class="services-container">
+            <span class="section-title">Capabilities & Deliveries</span>
             
-            <!-- PANEL: DIRECTORY -->
-            <div class="panel">
-                <div>
-                    <span class="panel-label">// 04_COMMUNICATION_CHANNELS</span>
-                    <div class="link-directory">
-                        <a href="https://rotnivka.substack.com" target="_blank"><span>> SUBSTACK</span><span>[LINK]</span></a>
-                        <a href="https://www.tiktok.com/@rotnivka" target="_blank"><span>> TIKTOK</span><span>[LINK]</span></a>
-                        <a href="https://www.linkedin.com/company/rotnivka" target="_blank"><span>> LINKEDIN</span><span>[LINK]</span></a>
-                        <a href="https://www.youtube.com/@rotnivka" target="_blank"><span>> YOUTUBE</span><span>[LINK]</span></a>
-                        <a href="https://www.instagram.com/rotnivka" target="_blank"><span>> INSTAGRAM</span><span>[LINK]</span></a>
-                    </div>
+            <div class="service-row" onclick="toggleService('sv1')">
+                <div class="service-trigger"><span>01 / Style Identity Architecture</span><span>+</span></div>
+                <div id="sv1" class="service-content">
+                    Comprehensive execution of identity architectures. Synthesizing advanced subcultural parameters, future-focused design, and structural styling systems tailored for the global vanguard.
+                    <br>
+                    <!-- 7. GUMROAD OVERLAY -->
+                    <a class="gumroad-button action-link" href="https://gumroad.com/l/tu_link_de_producto" target="_blank">Execute System Order →</a>
                 </div>
             </div>
 
-            <!-- PANEL: MEDIA 02 -->
-            <div class="media-frame">
-                <img src="assets/c2c044364e0a7c0f7119201470dcb692.jpg" alt="Aesthetic Data Log 02">
+            <div class="service-row" onclick="toggleService('sv2')">
+                <div class="service-trigger"><span>02 / Materials & Textile Consultancy</span><span>+</span></div>
+                <div id="sv2" class="service-content">
+                    Technical evaluation of advanced textiles, polymer dynamics, and high-performance synthetics. Designing execution strategies for next-generation avant-garde structures.
+                </div>
             </div>
 
+            <div class="service-row" onclick="toggleService('sv3')">
+                <div class="service-trigger"><span>03 / Garment Failure Simulation</span><span>+</span></div>
+                <div id="sv3" class="service-content">
+                    Predictive lifecycle modeling and structural stress testing. Mapping material degradation, threshold resilience, and architectural longevity in design.
+                </div>
+            </div>
         </div>
 
-        <!-- FOOTER DEFINITION -->
+        <!-- 6. SUBSTACK EMBED MODULE (MINIMAL, TRANSPARENT) -->
+        <div class="substack-section">
+            <span class="section-title">Primary Network Transmissions</span>
+            <iframe src="https://rotnivka.substack.com/embed" width="100%" height="240" style="border: 2px solid var(--ink-asphalt); background: transparent;" frameborder="0" scrolling="no"></iframe>
+        </div>
+
+        <!-- 1. NETWORK LINKS (CON TUS ENLACES REALES) -->
+        <div class="directory-box">
+            <span class="section-title">System Links</span>
+            <div class="directory-links">
+                <a href="https://rotnivka.substack.com" target="_blank">Substack</a>
+                <a href="https://www.tiktok.com/@rotnivka" target="_blank">TikTok</a>
+                <a href="https://www.linkedin.com/company/rotnivka" target="_blank">LinkedIn</a>
+                <a href="https://www.youtube.com/@rotnivka" target="_blank">YouTube</a>
+                <a href="https://www.instagram.com/rotnivka" target="_blank">Instagram</a>
+            </div>
+        </div>
+
+        <!-- 3. FOOTER REQUERIDO -->
         <footer>
-            <span>© 2026 ALL RIGHTS RESERVED</span>
-            <span>DATA_STREAM: SECURE</span>
             <span>FOUNDED BY ANYA ROTNIVKA</span>
+            <span>ALL RIGHTS RESERVED</span>
         </footer>
 
     </div>
 
-    <!-- PIPELINE SCRIPTS -->
+    <!-- SCRIPTS DE AUTOMATIZACIÓN -->
     <script src="https://gumroad.com/js/embed.js"></script>
     <script>
-        function openSpec(id) {
-            const currentBox = document.getElementById(id);
-            const isOpen = currentBox.style.display === "block";
+        function toggleService(id) {
+            const element = document.getElementById(id);
+            const isOpen = element.style.display === "block";
             
-            // Close all contents
-            document.querySelectorAll('.spec-content').forEach(el => el.style.display = "none");
+            document.querySelectorAll('.service-content').forEach(el => el.style.display = "none");
             
-            // Open target if it wasn't open
             if (!isOpen) {
-                currentBox.style.display = "block";
+                element.style.display = "block";
             }
         }
     </script>
