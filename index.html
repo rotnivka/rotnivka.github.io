@@ -1,265 +1,655 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROTNIVKA | Material & Identity Architecture</title>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --surface-silver: #C0C0C0;
-            --ink-asphalt: #1A1A1A;
-            --accent-red: #340001;
-            --font-display: 'Archivo Black', sans-serif;
-            --font-main: 'Inter', sans-serif;
-        }
 
-        body { 
-            background-color: var(--surface-silver); 
-            color: var(--ink-asphalt); 
-            font-family: var(--font-main); 
-            margin: 0; padding: 0; overflow-x: hidden;
-            -webkit-font-smoothing: antialiased;
-            letter-spacing: -0.02em;
-        }
+    <title>ROTNIVKA | Material Identity Research</title>
 
-        .fluid-layout { 
-            width: 100%; max-width: 1400px; margin: 0 auto; padding: 80px 40px; 
-            box-sizing: border-box;
-        }
+    <meta name="description"
+        content="Independent research exploring materials, identity, textile innovation, fashion history and semiotics.">
 
-        /* 1. HEADER REFORMADO: ROTNIVKA SÓLIDO COMPLETO */
-        header { 
-            margin-bottom: 100px; 
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-        
-        .brand-title { 
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 9.5vw, 8rem);
-            line-height: 0.9; margin: 0;
-            text-transform: uppercase; 
-            letter-spacing: -0.05em;
-        }
+    <meta name="author" content="Anya Rotnivka">
 
-        .meta-header {
-            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.5;
-        }
+    <meta property="og:title" content="ROTNIVKA">
 
-        /* 2. DISEÑO EDITORIAL CON TIPOGRAFÍA EDGY Y COMBINADA */
-        .editorial-split {
-            display: grid;
-            grid-template-columns: 0.6fr 1.4fr;
-            gap: 60px;
-            margin-bottom: 140px;
-            align-items: start;
-        }
+    <meta property="og:description"
+        content="Material Identity Research.">
 
-        @media (max-width: 992px) {
-            .editorial-split { grid-template-columns: 1fr; gap: 30px; margin-bottom: 80px; }
-            header { margin-bottom: 60px; }
-            .fluid-layout { padding: 40px 20px; }
-        }
+    <meta property="og:type" content="website">
 
-        .manifesto-box {
-            max-width: 850px;
-        }
+    <meta property="og:image" content="assets/og-image.jpg">
 
-        /* El bloque ahora comparte el peso visual y la fuerza del bloque inferior */
-        .manifesto-text {
-            font-family: var(--font-display);
-            font-size: clamp(1.4rem, 3.2vw, 2.6rem);
-            font-weight: 900;
-            line-height: 1.05;
-            color: var(--ink-asphalt);
-            text-transform: uppercase;
-            letter-spacing: -0.04em;
-            margin: 0;
-        }
+    <meta property="og:url" content="https://rotnivka.com">
 
-        /* GALERÍA ASIMÉTRICA DISTRIBUIDA */
-        .gallery-block {
-            display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; margin-bottom: 140px;
-        }
+    <meta name="twitter:card" content="summary_large_image">
 
-        @media (max-width: 768px) {
-            .gallery-block { grid-template-columns: 1fr; gap: 40px; margin-bottom: 80px; }
-        }
+    <link rel="icon" href="assets/favicon.svg">
 
-        .image-wrapper {
-            width: 100%; background: #000; overflow: hidden;
-        }
-        .image-wrapper img { 
-            width: 100%; display: block; filter: grayscale(1) contrast(1.1); opacity: 0.85; transition: 0.4s ease;
-        }
-        .image-wrapper:hover img { opacity: 1; }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-        /* SECCIÓN DE CAPACIDADES CENTRALIZADA */
-        .services-section {
-            display: grid;
-            grid-template-columns: 0.5fr 1.5fr;
-            gap: 60px;
-            margin-bottom: 140px;
-            border-top: 1px solid rgba(26, 26, 26, 0.15);
-            padding-top: 40px;
-        }
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-        @media (max-width: 768px) {
-            .services-section { grid-template-columns: 1fr; gap: 30px; margin-bottom: 80px; }
-        }
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
-        .section-title {
-            font-family: var(--font-main); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; color: var(--accent-red); letter-spacing: 0.1em;
-        }
+    <link rel="stylesheet" href="css/style.css">
 
-        .services-list { width: 100%; }
-
-        .service-row {
-            padding: 25px 0; cursor: pointer; transition: 0.3s ease; border-bottom: 1px solid rgba(26, 26, 26, 0.15);
-        }
-        .service-row:first-child { padding-top: 0; }
-        
-        .service-trigger { 
-            font-family: var(--font-display);
-            font-weight: 900; font-size: clamp(1.2rem, 2.5vw, 2.2rem); text-transform: uppercase; display: flex; justify-content: space-between; align-items: center; letter-spacing: -0.02em;
-        }
-        .service-trigger span:last-child { font-size: 1.1rem; font-weight: 300; font-family: var(--font-main); }
-
-        .service-content {
-            display: none; font-size: 1rem; line-height: 1.5; margin-top: 20px; max-width: 650px; font-weight: 400; color: #1a1a1a; text-transform: none;
-        }
-
-        .action-link {
-            display: inline-flex; align-items: center; margin-top: 20px; background: var(--ink-asphalt); color: var(--surface-silver); text-decoration: none; padding: 10px 25px; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; transition: 0.2s;
-        }
-        .action-link:hover { background: var(--accent-red); color: white; }
-
-        /* SECCIONES COMPLEMENTARIAS DISTRIBUIDAS */
-        .bottom-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 120px;
-        }
-        @media (max-width: 768px) { .bottom-grid { grid-template-columns: 1fr; gap: 60px; } }
-
-        .directory-links { display: flex; flex-direction: column; gap: 10px; }
-        .directory-links a {
-            color: inherit; text-decoration: none; font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 3.2rem); text-transform: uppercase; line-height: 1; letter-spacing: -0.03em; transition: 0.3s; width: fit-content;
-        }
-        .directory-links a:hover { color: var(--accent-red); transform: translateX(10px); }
-
-        /* FOOTER EXTENDIDO */
-        footer { 
-            border-top: 1px solid var(--ink-asphalt); padding-top: 40px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;
-        }
-    </style>
 </head>
+
 <body>
 
-    <div class="fluid-layout">
-        
-        <!-- HEADER MODULE CORREGIDO -->
-        <header>
-            <div class="brand-title">ROTNIVKA_</div>
-            <div class="meta-header">Material & Identity Architecture<br>// Worldwide Node</div>
-        </header>
+<header>
 
-        <!-- EDITORIAL SPLIT BLOCK (NUEVA IDENTIDAD TIPOGRÁFICA) -->
-        <div class="editorial-split">
-            <div class="meta-header" style="opacity: 0.4;">[SYSTEM_NODE_v1.18]</div>
-            
-            <div class="manifesto-box">
-                <h2 class="manifesto-text">
-                    Engineering the future of avant-garde fashion and materials. We build disruptive identity systems where advanced material intelligence dictating structural form meets edgy, high-end design.
-                </h2>
-            </div>
-        </div>
+<nav class="navbar">
 
-        <!-- VISUAL BLOCKS -->
-        <div class="gallery-block">
-            <div class="image-wrapper">
-                <img src="assets/d90c4e09c260fb32c54d1ce9d1127108.jpg" alt="Material Design Stream 01">
-            </div>
-            <div class="image-wrapper" style="margin-top: 80px;">
-                <img src="assets/c2c044364e0a7c0f7119201470dcb692.jpg" alt="Structural Design Stream 02">
-            </div>
-        </div>
+<a href="index.html" class="logo">
 
-        <!-- CAPABILITIES & SERVICES -->
-        <div class="services-section">
-            <span class="section-title">Capabilities<br>& Deliveries</span>
-            
-            <div class="services-list">
-                <div class="service-row" onclick="toggleService('sv1')">
-                    <div class="service-trigger"><span>01 / Style Identity Architecture</span><span>+</span></div>
-                    <div id="sv1" class="service-content">
-                        Comprehensive execution of identity architectures. Synthesizing advanced subcultural parameters, future-focused design, and structural styling systems tailored for the global vanguard.
-                        <br>
-                        <a class="gumroad-button action-link" href="https://gumroad.com/l/tu_link_de_producto" target="_blank">Execute System Order →</a>
-                    </div>
-                </div>
+ROTNIVKA
 
-                <!-- CORREGIDO EL TYPO AQUÍ PARA QUE EL EVENTO ONCLICK ABRA CORRECTAMENTE -->
-                <div class="service-row" onclick="toggleService('sv2')">
-                    <div class="service-trigger"><span>02 / Materials & Textile Consultancy</span><span>+</span></div>
-                    <div id="sv2" class="service-content">
-                        Technical evaluation of advanced textiles, polymer dynamics, and high-performance synthetics. Designing execution strategies for next-generation avant-garde structures.
-                    </div>
-                </div>
+</a>
 
-                <div class="service-row" onclick="toggleService('sv3')">
-                    <div class="service-trigger"><span>03 / Garment Failure Simulation</span><span>+</span></div>
-                    <div id="sv3" class="service-content">
-                        Predictive lifecycle modeling and structural stress testing. Mapping material degradation, threshold resilience, and architectural longevity in design.
-                    </div>
-                </div>
-            </div>
-        </div>
+<ul>
 
-        <!-- BOTTOM AREA (IGUAL A LA CAPTURA APRECIADA) -->
-        <div class="bottom-grid">
-            <div>
-                <span class="section-title" style="display:block; margin-bottom:20px;">Primary Transmissions</span>
-                <iframe src="https://rotnivka.substack.com/embed" width="100%" height="220" style="border: 2px solid var(--ink-asphalt); background: transparent;" frameborder="0" scrolling="no"></iframe>
-            </div>
-            
-            <div>
-                <span class="section-title" style="display:block; margin-bottom:20px;">Network Directory</span>
-                <div class="directory-links">
-                    <a href="https://rotnivka.substack.com" target="_blank">Substack</a>
-                    <a href="https://www.tiktok.com/@rotnivka" target="_blank">TikTok</a>
-                    <a href="https://www.linkedin.com/company/rotnivka" target="_blank">LinkedIn</a>
-                    <a href="https://www.youtube.com/@rotnivka" target="_blank">YouTube</a>
-                    <a href="https://www.instagram.com/rotnivka" target="_blank">Instagram</a>
-                </div>
-            </div>
-        </div>
+<li><a href="index.html">Home</a></li>
 
-        <!-- FOOTER -->
-        <footer>
-            <span>© 2026 ROTNIVKA</span>
-            <span>FOUNDED BY ANYA ROTNIVKA</span>
-            <span>ALL RIGHTS RESERVED</span>
-        </footer>
+<li><a href="research.html">Research</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<p class="eyebrow">
+
+Independent Research Practice
+
+</p>
+
+<h1>
+
+Material Identity Research
+
+</h1>
+
+<p class="hero-text">
+
+Investigating how materials shape identity,
+perception and culture.
+
+Research at the intersection of materials engineering,
+fashion history,
+semiotics,
+psychology
+and textile innovation.
+
+</p>
+
+<div class="hero-buttons">
+
+<a class="button" href="research.html">
+
+Read Research
+
+</a>
+
+<a class="button secondary" href="#newsletter">
+
+Subscribe
+
+</a>
+
+</div>
+
+</section>
+
+<section class="manifesto">
+
+<div class="section-label">
+
+Manifesto
+
+</div>
+
+<h2>
+
+Fashion deserves to be studied with the same rigor as architecture,
+industrial design or engineering.
+
+</h2>
+
+<p>
+
+ROTNIVKA investigates clothing beyond trends.
+
+Every textile carries mechanical properties.
+
+Every garment reflects technological choices.
+
+Every silhouette communicates cultural information.
+
+Through essays,
+case studies
+and long-form research,
+ROTNIVKA explores the systems that shape identity through material culture.
+
+</p>
+
+<a href="about.html">
+
+Learn more →
+
+</a>
+
+</section>
+
+<section class="topics">
+
+<div class="section-label">
+
+Current Research
+
+</div>
+
+<div class="topics-grid">
+
+<div class="topic">
+
+<h3>
+
+Material Science
+
+</h3>
+
+<p>
+
+Textile behaviour, fibres,
+surface properties,
+manufacturing
+and innovation.
+
+</p>
+
+</div>
+
+<div class="topic">
+
+<h3>
+
+Identity
+
+</h3>
+
+<p>
+
+How clothing influences authority,
+trust,
+memory
+and perception.
+
+</p>
+
+</div>
+
+<div class="topic">
+
+<h3>
+
+Semiotics
+
+</h3>
+
+<p>
+
+Symbols,
+visual language
+and cultural communication.
+
+</p>
+
+</div>
+
+<div class="topic">
+
+<h3>
+
+Luxury
+
+</h3>
+
+<p>
+
+Craftsmanship,
+heritage,
+materials
+and product longevity.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="featured">
+
+<div class="section-label">
+
+Research Archive
+
+</div>
+
+<h2>
+
+Upcoming Essays
+
+</h2>
+
+<div class="cards">
+
+<article class="card">
+
+<span>
+
+Essay
+
+</span>
+
+<h3>
+
+The Language of Linen
+
+</h3>
+
+<p>
+
+Why linen has communicated honesty,
+purity
+and effortless sophistication
+for centuries.
+
+</p>
+
+<p class="status">
+
+Coming Soon
+
+</p>
+
+</article>
+
+<article class="card">
+
+<span>
+
+Essay
+
+</span>
+
+<h3>
+
+Material Memory
+
+</h3>
+
+<p>
+
+How materials accumulate symbolic meaning
+through culture,
+history
+and repetition.
+
+</p>
+
+<p class="status">
+
+Coming Soon
+
+</p>
+
+</article>
+
+<article class="card">
+
+<span>
+
+Case Study
+
+</span>
+
+<h3>
+
+The Meat Dress Revisited
+
+</h3>
+
+<p>
+
+A material analysis of one of fashion's most misunderstood garments.
+
+</p>
+
+<p class="status">
+
+Coming Soon
+
+</p>
+
+</article>
+
+</div>
+
+</section>
+
+  <section id="newsletter" class="newsletter">
+
+    <div class="section-label">
+
+        Newsletter
 
     </div>
 
-    <!-- SCRIPTS -->
-    <script src="https://gumroad.com/js/embed.js"></script>
-    <script>
-        function toggleService(id) {
-            const element = document.getElementById(id);
-            const isOpen = element.style.display === "block";
-            
-            // Cierra los otros paneles abiertos
-            document.querySelectorAll('.service-content').forEach(el => el.style.display = "none");
-            
-            if (!isOpen) { 
-                element.style.display = "block"; 
-            }
-        }
-    </script>
+    <h2>
+
+        Research Notes
+
+    </h2>
+
+    <p>
+
+        Essays exploring materials, identity, engineering and textile innovation.
+
+        Published occasionally.
+
+        No trends.
+
+        No spam.
+
+    </p>
+
+    <form action="#" method="post">
+
+        <input
+            type="email"
+            placeholder="Email address"
+            required
+        >
+
+        <button type="submit">
+
+            Subscribe
+
+        </button>
+
+    </form>
+
+</section>
+
+<section class="contact-preview">
+
+    <div>
+
+        <div class="section-label">
+
+            Contact
+
+        </div>
+
+        <h2>
+
+            Interested in collaboration,
+            research,
+            education
+            or consulting?
+
+        </h2>
+
+        <p>
+
+            ROTNIVKA collaborates with brands,
+            institutions,
+            researchers
+            and organizations interested in identity,
+            materials,
+            luxury,
+            sustainability
+            and textile innovation.
+
+        </p>
+
+    </div>
+
+    <div>
+
+        <a class="button" href="contact.html">
+
+            Get in touch
+
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+<div class="footer-grid">
+
+<div>
+
+<h3>
+
+ROTNIVKA
+
+</h3>
+
+<p>
+
+Independent research practice exploring Material Identity.
+
+</p>
+
+</div>
+
+<div>
+
+<h4>
+
+Navigation
+
+</h4>
+
+<ul>
+
+<li>
+
+<a href="index.html">
+
+Home
+
+</a>
+
+</li>
+
+<li>
+
+<a href="research.html">
+
+Research
+
+</a>
+
+</li>
+
+<li>
+
+<a href="about.html">
+
+About
+
+</a>
+
+</li>
+
+<li>
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h4>
+
+Elsewhere
+
+</h4>
+
+<ul>
+
+<li>
+
+<a
+href="https://www.linkedin.com/company/rotnivka"
+target="_blank"
+rel="noopener noreferrer">
+
+LinkedIn
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://github.com/rotnivka"
+target="_blank"
+rel="noopener noreferrer">
+
+GitHub
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://youtube.com/@rotnivka"
+target="_blank"
+rel="noopener noreferrer">
+
+YouTube
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://www.tiktok.com/@rotnivka"
+target="_blank"
+rel="noopener noreferrer">
+
+TikTok
+
+</a>
+
+</li>
+
+<li>
+
+<a
+href="https://rotnivka.substack.com"
+target="_blank"
+rel="noopener noreferrer">
+
+Substack
+
+</a>
+
+</li>
+
+</ul>
+
+</div>
+
+<div>
+
+<h4>
+
+Contact
+
+</h4>
+
+<p>
+
+<a href="mailto:anya@rotnivka.com">
+
+anya@rotnivka.com
+
+</a>
+
+</p>
+
+<p>
+
+Based in Venezuela.
+
+Working internationally.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+
+<p>
+
+© 2026 ROTNIVKA.
+
+All rights reserved.
+
+</p>
+
+<p>
+
+Designed and written by Anya Rotnivka.
+
+</p>
+
+</div>
+
+</footer>
+
+<script src="js/main.js"></script>
+
 </body>
+
 </html>
