@@ -318,17 +318,82 @@ button:hover {
     color: #FFFFFF;
 }
 
-/* CONTACT PREVIEW */
+/* =========================================================
+   HARMONIC CONTACT PREVIEW SYSTEM
+========================================================= */
+
 .contact-preview {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr; /* Tensión asimétrica brutalista */
     gap: 60px;
+    align-items: flex-end; /* Alinea la base del botón con el párrafo */
+    padding: 120px 0;
+    border-bottom: 1px solid rgba(26, 26, 26, 0.15);
 }
 
+.contact-preview-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* El gran título industrial */
 .contact-preview h2 {
-    font-size: clamp(1.8rem, 4vw, 3.5rem);
-    max-width: 700px;
+    font-family: var(--font-display), 'Archivo Black', sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    margin-bottom: 30px; /* Genera el respiro armónico antes del texto */
+    max-width: 900px;
+}
+
+/* El bloque descriptivo */
+.contact-preview p {
+    font-family: var(--font-main), 'Inter', sans-serif;
+    max-width: 750px;
+    font-size: clamp(1rem, 1.5vw, 1.15rem);
+    line-height: 1.5;
+    color: var(--ink-asphalt);
+    opacity: 0.9;
+}
+
+/* Contenedor derecho del botón */
+.contact-preview-action {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+}
+
+/* El botón monolítico */
+.contact-preview-action .button {
+    display: inline-block;
+    text-align: center;
+    min-width: 220px;
+    padding: 18px 36px;
+    font-family: var(--font-main), sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* RESPONSIVE TRANSLATION: Adaptación a móviles y tablets */
+@media (max-width: 992px) {
+    .contact-preview {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        align-items: flex-start;
+        padding: 80px 0;
+    }
+    
+    .contact-preview-action {
+        justify-content: flex-start;
+        width: 100%;
+    }
+    
+    .contact-preview-action .button {
+        width: 100%; /* Bloque completo al 100% en pantallas móviles */
+    }
 }
 
 /* EXTENDED FOOTER SYSTEM */
