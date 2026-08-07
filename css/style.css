@@ -222,13 +222,24 @@ section {
 /* CREDENTIALS TICKER BAR */
 .credentials-bar {
     padding: 25px 0;
+    border-top: 1px solid rgba(26, 26, 26, 0.15);
     border-bottom: 1px solid rgba(26, 26, 26, 0.15);
     font-family: var(--font-main);
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.08em; /* Separa ligeramente las letras */
+    line-height: 1.8;       /* Da margen vertical si el texto salta de línea en laptops/móviles */
     color: var(--ink-asphalt);
+    display: flex;
+    flex-wrap: wrap;        /* Permite que fluya limpiamente sin apretarse */
+    align-items: center;
+    gap: 0.5rem 0.2rem;
+}
+
+.credentials-bar .dot {
+    margin: 0 0.6rem;       /* Crea el espacio horizontal a los lados de cada punto */
+    color: var(--accent-red); /* Opcional: resalta los puntos separadores */
 }
 
 /* =========================================================
