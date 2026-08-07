@@ -408,16 +408,19 @@ footer {
     gap: 12px;
 }
 
-/* AJUSTE EDITORIAL: Los párrafos informativos del footer usan Inter, los enlaces usan Archivo Black */
+/* 
+   REGLA CORREGIDA: Replica exactamente la tipografía del copyright
+   (DESIGNED AND WRITTEN BY ANYA ROTNIVKA / © 2026 ROTNIVKA.)
+*/
 .footer-grid p {
     font-family: var(--font-main);
     font-size: 0.75rem;
-    font-weight: 700;
+    font-weight: 400;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     line-height: 1.4;
     color: var(--ink-asphalt);
-    opacity: 0.85;
+    opacity: 1;
 }
 
 .footer-grid a {
@@ -441,10 +444,12 @@ footer {
     border-top: 1px solid rgba(26, 26, 26, 0.15);
     display: flex;
     justify-content: space-between;
-    font-weight: 700;
+    font-family: var(--font-main);
+    font-weight: 400;
     text-transform: uppercase;
     font-size: 0.75rem;
     letter-spacing: 0.05em;
+    color: var(--ink-asphalt);
     opacity: 1;
 }
 
@@ -484,13 +489,13 @@ footer {
 
 .footer-contact-block .contact-location {
     font-family: var(--font-main);
-    font-size: 0.95rem;
+    font-size: 0.75rem;
     font-weight: 400;
-    text-transform: none;
+    text-transform: uppercase;
     color: var(--ink-asphalt);
-    opacity: 0.85;
+    opacity: 1;
     line-height: 1.4;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.05em;
 }
 
 /* =========================================================
