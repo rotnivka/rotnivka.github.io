@@ -1,23 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-05HCMTHTEG"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-05HCMTHTEG"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-  gtag('config', 'G-05HCMTHTEG');
-</script>
+        gtag('config', 'G-05HCMTHTEG');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | ROTNIVKA</title>
-    <link rel="stylesheet" href="css/style.css?v=1.2">
+
+    <title>Contact | ROTNIVKA Identity Architecture</title>
+
+    <meta name="description"
+        content="Get in touch with ROTNIVKA for identity architecture inquiries, strategic style consultations, custom bespoke projects, and speaking engagements.">
+
+    <meta name="author" content="Anya Rotnivka">
+
+    <link rel="icon" href="assets/favicon.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
     <header>
@@ -25,30 +36,34 @@
             <a class="logo" href="index.html">ROTNIVKA</a>
             <ul>
                 <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
+        <!-- HERO SECTION -->
         <section class="hero contact-hero">
-            <p class="eyebrow">Contact</p>
-            <h1>Let's build better identities.</h1>
+            <p class="eyebrow">Inquiries & Direct Contact</p>
+            <h1>Let's build your visual system.</h1>
             <p class="hero-text">
-                Research collaborations, consulting, speaking engagements and partnerships.
+                For 1:1 Identity Architecture, custom styling scopes, brand consulting, speaking engagements, or private inquiries.
             </p>
         </section>
 
+        <!-- DIRECTORY / CONTACT CARDS -->
         <section class="contact-directory">
             <div class="contact-card-group">
-                <span class="status">Email</span>
+                <span class="status">Direct Email</span>
                 <h2><a href="mailto:anya@rotnivka.com" class="main-email-link">anya@rotnivka.com</a></h2>
+                <p style="margin-top: 10px; color: #888;">Response window: 24–48 hours.</p>
             </div>
 
-            <div class="contact-networks-group">
+            <div class="contact-networks-group" style="margin-top: 40px;">
                 <span class="status">Network Directory</span>
-                <div class="directory-links">
+                <div class="directory-links" style="margin-top: 15px; display: flex; gap: 20px; flex-wrap: wrap;">
                     <a href="https://www.linkedin.com/company/rotnivka" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <a href="https://rotnivka.substack.com" target="_blank" rel="noopener noreferrer">Substack</a>
                     <a href="https://github.com/rotnivka" target="_blank" rel="noopener noreferrer">GitHub</a>
@@ -60,11 +75,47 @@
     </main>
 
     <footer>
+        <div class="footer-grid">
+            <div>
+                <h3>ROTNIVKA</h3>
+                <p>Identity Architecture Practice</p>
+            </div>
+
+            <div>
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4>Elsewhere</h4>
+                <ul>
+                    <li><a href="https://www.linkedin.com/company/rotnivka" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                    <li><a href="https://github.com/rotnivka" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="https://youtube.com/@rotnivka" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                    <li><a href="https://www.tiktok.com/@rotnivka" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                    <li><a href="https://rotnivka.substack.com" target="_blank" rel="noopener noreferrer">Substack</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact-block">
+                <span class="contact-label">Contact</span>
+                <a href="mailto:anya@rotnivka.com" class="contact-email">anya@rotnivka.com</a>
+                <p class="contact-location">Based in Venezuela. Working internationally.</p>
+            </div>
+        </div>
+
         <div class="footer-bottom">
-            <p>© 2026 ROTNIVKA. All rights reserved.</p>
-            <p>Designed and written by Anya Rotnivka.</p>
+            <p>© 2026 ROTNIVKA</p>
+            <p>Designed and written by Anya Rotnivka</p>
         </div>
     </footer>
 
+    <script src="js/main.js"></script>
 </body>
+
 </html>
