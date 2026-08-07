@@ -1,13 +1,15 @@
 /* =========================================================
    ROTNIVKA — STYLE.CSS (COMPLETE SYSTEM)
-   Material Identity Research
+   Identity Architecture Studio
 ========================================================= */
 
 /* IMPORTS */
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;700;900&display=swap');
 
 /* RESET & BASE */
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -15,14 +17,31 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 :root {
+    /* Color Palette */
     --surface-silver: #C0C0C0;
     --ink-asphalt: #1A1A1A;
     --accent-red: #340001;
+    --accent-red-hover: #4a0002;
+    --white: #FFFFFF;
+    
+    /* Typography */
     --font-display: 'Archivo Black', sans-serif;
-    --font-main: 'Inter', sans-serif;
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+    /* Transitions */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.2s var(--ease-out);
+    --transition-smooth: 0.3s var(--ease-out);
+}
+
+/* Custom Selection */
+::selection {
+    background-color: var(--accent-red);
+    color: var(--white);
 }
 
 body {
@@ -31,7 +50,9 @@ body {
     color: var(--ink-asphalt);
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     letter-spacing: -0.02em;
+    overflow-x: hidden;
 }
 
 /* TYPOGRAPHY */
@@ -52,7 +73,7 @@ p {
 a {
     color: inherit;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
 ul {
@@ -69,11 +90,11 @@ main {
 header {
     position: sticky;
     top: 0;
-    background: rgba(192, 192, 192, 0.85);
+    background: rgba(192, 192, 192, 0.88);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid rgba(26, 26, 26, 0.15);
-    z-index: 100;
+    z-index: 1000;
 }
 
 .navbar {
@@ -91,6 +112,7 @@ header {
     font-size: clamp(1.1rem, 2vw, 1.8rem);
     text-transform: uppercase;
     letter-spacing: -0.04em;
+    white-space: nowrap;
 }
 
 .navbar ul {
@@ -118,22 +140,26 @@ header {
     color: var(--surface-silver);
     border: 1px solid var(--ink-asphalt);
     display: inline-block;
-    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-smooth);
 }
 
-.button:hover {
+.button:hover,
+.button:focus-visible {
     background: var(--accent-red);
-    color: #FFFFFF;
+    color: var(--white);
     border-color: var(--accent-red);
 }
 
-.secondary {
+.button.secondary {
     background: transparent;
     color: var(--ink-asphalt);
     border: 1px solid var(--ink-asphalt);
 }
 
-.secondary:hover {
+.button.secondary:hover,
+.button.secondary:focus-visible {
     background: var(--ink-asphalt);
     color: var(--surface-silver);
     border-color: var(--ink-asphalt);
@@ -328,6 +354,7 @@ input {
     font-weight: 700;
     font-size: 0.9rem;
     text-transform: uppercase;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
 }
 
 input::placeholder {
@@ -336,7 +363,12 @@ input::placeholder {
 
 input:focus {
     outline: none;
-    background: rgba(255,255,255,0.1);
+}
+
+input:focus-visible {
+    outline: 2px solid var(--accent-red);
+    outline-offset: 2px;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 button {
@@ -349,12 +381,13 @@ button {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     cursor: pointer;
-    transition: 0.2s ease;
+    transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
-button:hover {
+button:hover,
+button:focus-visible {
     background: var(--accent-red);
-    color: #FFFFFF;
+    color: var(--white);
 }
 
 /* =========================================================
@@ -453,10 +486,11 @@ button:hover {
     text-decoration: none;
     line-height: 1.1;
     letter-spacing: -0.03em;
-    transition: color 0.3s ease;
+    transition: color var(--transition-fast);
 }
 
-.main-email-link:hover {
+.main-email-link:hover,
+.main-email-link:focus-visible {
     color: var(--accent-red);
 }
 
@@ -477,10 +511,11 @@ button:hover {
     text-decoration: none;
     line-height: 1.2;
     letter-spacing: -0.03em;
-    transition: transform 0.2s ease, color 0.2s ease;
+    transition: transform var(--transition-fast), color var(--transition-fast);
 }
 
-.directory-links a:hover {
+.directory-links a:hover,
+.directory-links a:focus-visible {
     color: var(--accent-red);
     transform: translateX(8px); 
 }
@@ -625,7 +660,6 @@ footer {
     gap: 12px;
 }
 
-/* IDENTITY ARCHITECTURE STUDIO en negrita */
 .footer-grid p {
     font-family: var(--font-main);
     font-size: clamp(1.1rem, 1.5vw, 1.3rem);
@@ -646,7 +680,8 @@ footer {
     opacity: 1;
 }
 
-.footer-grid a:hover {
+.footer-grid a:hover,
+.footer-grid a:focus-visible {
     color: var(--accent-red);
 }
 
@@ -692,11 +727,11 @@ footer {
     margin-bottom: 12px;
 }
 
-.footer-contact-block .contact-email:hover {
+.footer-contact-block .contact-email:hover,
+.footer-contact-block .contact-email:focus-visible {
     color: var(--accent-red);
 }
 
-/* Ubicación sutil y pequeña */
 .footer-contact-block .contact-location {
     font-family: var(--font-main);
     font-size: clamp(0.8rem, 1vw, 0.95rem);
@@ -713,6 +748,10 @@ footer {
 ========================================================= */
 
 @media (max-width: 992px) {
+    section {
+        padding: 80px 0;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr 1fr;
     }
@@ -751,9 +790,13 @@ footer {
 }
 
 @media (max-width: 768px) {
+    section {
+        padding: 60px 0;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr;
-        gap: 50px;
+        gap: 40px;
     }
 
     .footer-bottom {
@@ -766,6 +809,10 @@ footer {
     .newsletter form {
         flex-direction: column;
     }
+
+    input {
+        border-bottom: none;
+    }
     
     button {
         width: 100%;
@@ -774,6 +821,7 @@ footer {
 
 @media (max-width: 600px) {
     .navbar ul {
-        gap: 1rem;
+        gap: 1.2rem;
+        font-size: 0.7rem;
     }
 }
