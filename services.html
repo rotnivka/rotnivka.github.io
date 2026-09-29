@@ -31,33 +31,16 @@
     <!-- Tally Popup Embed Script -->
     <script async src="https://tally.so/widgets/embed.js"></script>
 
-    <!-- Cal.com Popup Embed Script (Integración Corregida) -->
+    <!-- Cal element-click embed code begins -->
     <script type="text/javascript">
-      (function (C, A, L) { 
-        let p = function (a, ar) { a.q.push(ar); }; 
-        L.Cal = L.Cal || function () { 
-          let cal = L.Cal; 
-          let args = arguments; 
-          if (!cal.loaded) { 
-            cal.ns = {}; 
-            cal.q = cal.q || []; 
-            document.head.appendChild(document.createElement("script")).src = A; 
-            cal.loaded = true; 
-          } 
-          if (args[0] === "init") { 
-            L.Cal.ns[args[1]] = L.Cal.ns[args[1]] || function () { 
-              let args = arguments; 
-              (L.Cal.ns[args[1]].q = L.Cal.ns[args[1]].q || []).push(args); 
-            }; 
-            return; 
-          } 
-          p(cal, args); 
-        }; 
-      })(window, "https://app.cal.com/embed/embed.js", "Cal");
+      (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+      Cal("init", "identity-strategy-call", {origin:"https://app.cal.com"});
+      Cal.config = Cal.config || {};
+      Cal.config.forwardQueryParams = true;
 
-      Cal("init", {origin:"https://cal.com"});
-      Cal("ui", {"styles":{"branding":{"brandColor":"#000000"}},"hideEventTypeDetails":false,"layout":"month_view"});
+      Cal.ns["identity-strategy-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
     </script>
+    <!-- Cal element-click embed code ends -->
 
     <script>function loadScript(a){var b=document.getElementsByTagName("head")[0],c=document.createElement("script");c.type="text/javascript",c.src="https://tracker.metricool.com/resources/be.js",c.onreadystatechange=a,c.onload=a,b.appendChild(c)}loadScript(function(){beTracker.t({hash:"eb5ea7fb314222ed35dd69c7511babc7"})});</script>
 </head>
@@ -86,13 +69,20 @@
             From strategic 1:1 consultations to complete identity architecture overhauls and commercial creative direction. Every service is grounded in material intelligence, proportion engineering, and long-term visual coherence.
         </p>
 
-        <!-- Fast-Track Integrado y Minimalista -->
-        <p class="hero-fast-track" style="margin-top: 1.5rem; font-size: 0.95rem; opacity: 0.85;">
-            Need immediate strategic clarity or a 1:1 diagnostic? 
-            <a href="#" data-cal-link="rotnivka/identity-strategy-call" style="color: inherit; text-decoration: underline; text-underline-offset: 4px; font-weight: 500;">
-                Book an Identity Strategy Call &rarr;
-            </a>
-        </p>
+        <!-- Fast-Track Hero Banner con presencia tipográfica adecuada -->
+        <div class="hero-fast-track" style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.15);">
+            <p style="font-size: 1.15rem; font-weight: 500; margin-bottom: 1rem; color: #000;">
+                Need immediate strategic clarity or a 1:1 diagnostic?
+            </p>
+            <button 
+                data-cal-link="rotnivka/identity-strategy-call"
+                data-cal-namespace="identity-strategy-call"
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                class="button"
+                style="cursor: pointer;">
+                Book Identity Strategy Call
+            </button>
+        </div>
     </section>
 
     <!-- SERVICES LISTING SECTION -->
@@ -232,7 +222,9 @@
 
                 <div class="service-action">
                     <button 
-                        data-cal-link="rotnivka/identity-strategy-call" 
+                        data-cal-link="rotnivka/identity-strategy-call"
+                        data-cal-namespace="identity-strategy-call"
+                        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
                         class="button" 
                         style="cursor: pointer;">
                         Book Strategy Call
@@ -287,7 +279,7 @@
             <div class="section-label">Bespoke Projects</div>
             <h2>NEED A CUSTOM SCOPE OR BRAND CONSULTING?</h2>
             <p>
-                For custom institutional inquiries, textile research or corporate brand identity consulting, reach out directly.
+                For custom institutional inquiries, textile research, or corporate brand identity consulting, reach out directly.
             </p>
         </div>
         <div class="contact-preview-action">
