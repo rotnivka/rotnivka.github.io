@@ -38,7 +38,12 @@
       Cal.config = Cal.config || {};
       Cal.config.forwardQueryParams = true;
 
-      Cal.ns["identity-strategy-call"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+      Cal.ns["identity-strategy-call"]("ui", {
+        "theme":"light",
+        "styles":{"branding":{"brandColor":"#000000"}},
+        "hideEventTypeDetails":false,
+        "layout":"month_view"
+      });
     </script>
     <!-- Cal element-click embed code ends -->
 
@@ -69,17 +74,17 @@
             From strategic 1:1 consultations to complete identity architecture overhauls and commercial creative direction. Every service is grounded in material intelligence, proportion engineering, and long-term visual coherence.
         </p>
 
-        <!-- Fast-Track Hero Banner con presencia tipográfica adecuada -->
-        <div class="hero-fast-track" style="margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.15);">
-            <p style="font-size: 1.15rem; font-weight: 500; margin-bottom: 1rem; color: #000;">
+        <!-- Fast-Track Hero Banner Centrado y en Letras Rojas -->
+        <div class="hero-fast-track" style="margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.15); text-align: center;">
+            <p style="font-size: 1.15rem; font-weight: 600; margin-bottom: 1.25rem; color: #5c0606; text-transform: uppercase; letter-spacing: 0.05em;">
                 Need immediate strategic clarity or a 1:1 diagnostic?
             </p>
             <button 
                 data-cal-link="rotnivka/identity-strategy-call"
                 data-cal-namespace="identity-strategy-call"
-                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"}'
                 class="button"
-                style="cursor: pointer;">
+                style="cursor: pointer; display: inline-block;">
                 Book Identity Strategy Call
             </button>
         </div>
@@ -224,7 +229,7 @@
                     <button 
                         data-cal-link="rotnivka/identity-strategy-call"
                         data-cal-namespace="identity-strategy-call"
-                        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                        data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true","theme":"light"}'
                         class="button" 
                         style="cursor: pointer;">
                         Book Strategy Call
